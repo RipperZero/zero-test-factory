@@ -1,0 +1,21 @@
+body {
+    color: white;
+    background-color: black;
+}
+
+p {
+    color: yellow;
+    font-family: "arial",sans-serif;
+    font-size: 1.2em;
+}
+
+#purchases {
+    border: 1px solid white;
+    background-color: #333;
+    color: #ccc;
+    padding: 1em;
+}
+
+#purchases li{
+    font-weight: bold;
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>blockElement</title>
+
+    <style>
+        #planA_hasWidth_father {
+            width: 500px;
+            height: 300px;
+            background-color: skyblue;
+        }
+
+        #planA_hasWidth_son {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            margin: 0 auto;
+        }
+
+        #planA_noWidth_father {
+            width: 500px;
+            height: 300px;
+            background-color: skyblue;
+            text-align: center;
+        }
+
+        #planA_noWidth_son {
+            background-color: green;
+            display: inline;
+        }
+
+        #planB_hasWidth_father {
+            width: 500px;
+            height: 300px;
+            background-color: skyblue;
+            position: relative;
+        }
+
+        #planB_hasWidth_son {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            position: absolute;
+            left: 50%;
+            /* margin-left: -50px; */
+            transform: translateX(-50%);
+        }
+
+        #planB_noWidth_father {
+            width: 500px;
+            height: 300px;
+            background-color: skyblue;
+            position: relative;
+        }
+
+        #planB_noWidth_son {
+            height: 100px;
+            background-color: green;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #planC_father {
+            width: 500px;
+            height: 300px;
+            background-color: skyblue;
+            display: flex;
+            justify-content: center;
+        }
+
+        #planC_son {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>有宽度</h1>
+    <div id="planA_hasWidth_father">
+        <div id="planA_hasWidth_son">块级元素</div>
+    </div>
+    <hr>
+    <h1>无宽度</h1>
+    <div id="planA_noWidth_father">
+        <div id="planA_noWidth_son">块级元素</div>
+    </div>
+    <hr>
+    <h1>有宽度_使用定位</h1>
+    <div id="planB_hasWidth_father">
+        <div id="planB_hasWidth_son">块级元素</div>
+    </div>
+    <hr>
+    <h1>无宽度_使用定位</h1>
+    <div id="planB_noWidth_father">
+        <div id="planB_noWidth_son">块级元素</div>
+    </div>
+    <hr>
+    <h1>flex布局</h1>
+    <div id="planC_father">
+        <div id="planC_son">块级元素</div>
+    </div>
+</body>
+
+</html>

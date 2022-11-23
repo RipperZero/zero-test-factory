@@ -1,0 +1,8 @@
+.father {
+    width: 102px
+}
+
+.son {
+    border: 1px solid;
+    padding: 20px;
+}

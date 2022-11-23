@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="test.css" />
+    <title>Shopping List</title>
+</head>
+
+<body>
+    <h1>What to buy</h1>
+    <p title="a gentle reminder">Don't forget to buy this stuff.</p>
+    <p>This is just a test</p>
+    <ul id="purchases">
+        <li>A tin of beans</li>
+        <li class="sale">Cheese</li>
+        <li class="sale important">Milk</li>
+    </ul>
+    <script>
+        // alert(typeof document.getElementById("purchases"));
+
+        // const items = document.getElementsByTagName("li");
+        // for (let index = 0; index < items.length; index++) {
+        //     alert(typeof items[index]);
+        // }
+
+        // alert(document.getElementsByTagName("*").length);
+
+        // const shopping = document.getElementById("purchases");
+        // const items = shopping.getElementsByTagName("*");
+        // alert(items.length);
+
+        // alert(document.getElementsByClassName("sale important").length);
+
+        // const paras = document.getElementsByTagName("p");
+        // for (let index = 0; index < paras.length; index++) {
+        //     const title_text = paras[index].getAttribute("title");
+        //     if (title_text) {
+        //         alert(title_text);
+        //     }
+        // }
+
+        // const shopping = document.getElementById("purchases");
+        // alert(shopping.getAttribute("title"));
+        // shopping.setAttribute("title", "a list of goods");
+        // alert(shopping.getAttribute("title"));
+
+        const paras = document.getElementsByTagName("p");
+        for (let index = 0; index < paras.length; index++) {
+            const title_text = paras[index].getAttribute("title");
+            if (title_text) {
+                paras[index].setAttribute("title", "brand new title text");
+                alert(paras[index].getAttribute("title"));
+            }
+        }
+    </script>
+</body>
+
+</html>
