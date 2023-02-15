@@ -5,4 +5,6 @@ export const APP_PATHS = {
 
   /** TEMPLATE */
   TEMPLATE: `${BASEURL}template`,
+
+  ANTD: `${BASEURL}antd`
 } as const;
