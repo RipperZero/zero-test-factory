@@ -1,27 +1,27 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
+  "name": "zero-test-factory",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@types/node": "^18.11.9",
-    "@types/react": "^18.0.25",
-    "@types/react-dom": "^18.0.9",
+    "@types/node": "^18.13.0",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
     "@types/react-router-dom": "^5.3.3",
-    "antd": "^5.0.1",
+    "antd": "^5.2.1",
     "classnames": "^2.3.2",
-    "dayjs": "^1.11.6",
-    "immer": "^9.0.16",
+    "dayjs": "^1.11.7",
+    "immer": "^9.0.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.4.3",
+    "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.5"
   },
   "devDependencies": {
-    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
     "esm": "^3.2.25",
-    "prettier": "^2.8.0"
+    "prettier": "^2.8.4"
   },
   "scripts": {
     "start": "react-scripts start",
