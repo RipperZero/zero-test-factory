@@ -1,5 +1,6 @@
-import { AntdTable } from "./Table";
+// import { AntdTable } from "./Table";
+import { Counter } from "./Counter";
 
-const Antd = AntdTable;
+const Antd = Counter;
 
 export { Antd };
