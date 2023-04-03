@@ -2,9 +2,11 @@ import { FC } from "react";
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 import { Button, Space, Typography } from "antd";
+import { shallow } from "zustand/shallow";
 
 type CounterState = {
   count: number;
+  zero: string;
   increment: () => void;
 };
 
@@ -23,6 +25,7 @@ const useImmerCounterStore = create(
   immer<CounterState>((set) => {
     return {
       count: 0,
+      zero: "湖人总冠军!!!",
       increment: () => {
         set((state) => {
           state.count += 1;
@@ -32,27 +35,40 @@ const useImmerCounterStore = create(
   }),
 );
 
-type CounterProps = {};
+const CountText: FC = () => {
+  const { count } = useImmerCounterStore();
 
-const Counter: FC<CounterProps> = () => {
+  return <Typography.Title level={3}>{count}</Typography.Title>;
+};
+
+const Counter: FC = () => {
+  console.log("Counter render");
   // #region hooks start
-  const { count, increment } = useImmerCounterStore();
+  const { zero, increment } = useImmerCounterStore((state) => {
+    const { zero, increment } = state;
+    console.log("======================");
+    console.log(zero);
+
+    return {
+      zero: zero,
+      increment: increment,
+    };
+  }, shallow);
+  console.log("+++++++++++++++++++++++");
+  console.log(zero);
   // #endregion hooks end
 
   // #region useEffect functions start
   // #endregion useEffect functions end
 
   // #region logic functions start
-  const handleClick = () => {
-    increment();
-  };
   // #endregion logic functions end
 
   // #region render functions start
   return (
     <Space direction="vertical">
-      <Typography.Title level={3}>{count}</Typography.Title>
-      <Button type="primary" onClick={handleClick}>
+      <CountText />
+      <Button type="primary" onClick={increment}>
         Add
       </Button>
     </Space>
