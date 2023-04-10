@@ -54,3 +54,25 @@
 
 // console.log(decode("c3VwZXI="));
 // console.log(decode("MQ=="));
+import { round, divide, times, minus } from "number-precision";
+
+const standardPrice = 66;
+const discount = 13.3;
+
+let _discountedPrice =
+  discount > 0
+    ? times(standardPrice, round(divide(discount, 100), 3))
+    : standardPrice;
+
+_discountedPrice = Math.floor(_discountedPrice);
+const singleDigitsOfDiscountedPrice = _discountedPrice % 10;
+
+/** 仕切価格 */
+const discountedPrice =
+  singleDigitsOfDiscountedPrice > 0
+    ? minus(_discountedPrice, singleDigitsOfDiscountedPrice)
+    : _discountedPrice;
+console.log(discountedPrice);
+
+// const num = 456987231324132.33333;
+// console.log(num.toLocaleString("ja", { style: "currency", currency: "JPY" }));

@@ -6,5 +6,7 @@ export const APP_PATHS = {
   /** TEMPLATE */
   TEMPLATE: `${BASEURL}template`,
 
-  ANTD: `${BASEURL}antd`
+  ANTD: `${BASEURL}antd`,
+
+  SEGMENT: `${BASEURL}segment`,
 } as const;
