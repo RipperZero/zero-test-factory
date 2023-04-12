@@ -19,15 +19,53 @@
 // console.log(Object.prototype.toString.call([]));
 // ------------------------------------------------
 
+// ------------------------------------------------
 // 默认值只在undefined时生效
 // const testDefault = (param = 1) => {
 //   console.log(param || 1);
 // };
 // console.log(testDefault(null));
-// import dayjs from "dayjs";
+// ------------------------------------------------
 
-// console.log(dayjs("2023/03/02").format("DD/MM/YYYY"));
-// console.log(dayjs("2023/03/02", "MM/DD").toString());
+// ------------------------------------------------
+// const pA = () => {
+//   return new Promise((resolve, reject) => {
+//     resolve("Promise A resolve");
+//     // reject("Promise A reject");
+//   });
+// };
+
+// const pB = () => {
+//   return new Promise((resolve, reject) => {
+//     resolve("Promise B resolve");
+//     // reject("Promise B reject");
+//   });
+// };
+
+// const pC = () => {
+//   return new Promise((resolve, reject) => {
+//     // resolve("Promise C resolve");
+//     reject("Promise C reject");
+//   });
+// };
+// const asyncFun = async () => {
+//   const resA = await pA();
+//   console.log("AAAAAA");
+//   console.log(resA);
+//   const resB = await pB();
+//   console.log("BBBBBB");
+//   console.log(resB);
+//   console.log("CCCCCC");
+//   const resC = await pC();
+//   console.log(resC);
+// };
+// console.time("asyncFun");
+// asyncFun().catch((error) => {
+//   console.log("error error error error");
+//   console.log(error);
+// });
+// console.timeEnd("asyncFun");
+// ------------------------------------------------
 
 // function spArr(arr, num) {
 //   //arr是你要分割的数组，num是以几个为一组
