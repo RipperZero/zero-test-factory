@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import { APP_PATHS } from "@common/config";
 import { Antd } from "test-factory/antd";
 import { Segment } from "test-factory/segment";
 
-export const Router: FC = () => {
+const Router: FC = () => {
   return (
     <Routes>
       <Route path={APP_PATHS.ROOT} element={<div>root</div>} />
@@ -15,3 +15,5 @@ export const Router: FC = () => {
     </Routes>
   );
 };
+
+export { Router };

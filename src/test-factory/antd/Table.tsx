@@ -8,6 +8,7 @@ import {
   useRef,
   useState,
 } from "react";
+
 import type { InputRef } from "antd";
 import { Button, Form, Input, Popconfirm, Table } from "antd";
 import type { FormInstance } from "antd/es/form";
@@ -173,6 +174,7 @@ const AntdTable: FC = () => {
             // @ts-ignore:next-line
             onConfirm={() => handleDelete(record.key)}
           >
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a>Delete</a>
           </Popconfirm>
         ) : null;

@@ -1,14 +1,15 @@
 {
-  "name": "zero-test-factory",
-  "version": "1.0.0",
+  "name": "test-factory",
   "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
   "dependencies": {
-    "@types/node": "^18.15.11",
-    "@types/react": "^18.0.33",
-    "@types/react-dom": "^18.0.11",
-    "@types/react-router-dom": "^5.3.3",
-    "antd": "^5.4.0",
-    "classnames": "^2.3.2",
+    "antd": "^5.4.2",
     "dayjs": "^1.11.7",
     "immer": "^9.0.21",
     "js-base64": "^3.7.5",
@@ -16,38 +17,25 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.10.0",
-    "react-scripts": "5.0.1",
-    "typescript": "^5.0.4",
     "zustand": "^4.3.7"
   },
   "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.1.1",
+    "@types/node": "^18.15.11",
+    "@types/react": "^18.0.34",
+    "@types/react-dom": "^18.0.11",
+    "@types/react-router-dom": "^5.3.3",
+    "@vitejs/plugin-react": "^3.1.0",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-config-react-app": "^7.0.1",
     "esm": "^3.2.25",
-    "prettier": "^2.8.7"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "postcss": "^8.4.21",
+    "prettier": "^2.8.7",
+    "tailwindcss": "^3.3.1",
+    "typescript": "^5.0.4",
+    "vite": "^4.2.0",
+    "vite-tsconfig-paths": "^4.1.0"
   }
 }

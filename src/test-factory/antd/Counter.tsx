@@ -1,7 +1,9 @@
 import { FC } from "react";
+
+import { Button, Space, Typography } from "antd";
+
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
-import { Button, Space, Typography } from "antd";
 import { shallow } from "zustand/shallow";
 
 type CounterState = {
