@@ -9,4 +9,6 @@ export const APP_PATHS = {
   ANTD: `${BASEURL}antd`,
 
   SEGMENT: `${BASEURL}segment`,
+
+  TAILWIND: `${BASEURL}tailwind`,
 } as const;
