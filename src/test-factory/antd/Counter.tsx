@@ -43,33 +43,33 @@ const CountText: FC = () => {
 };
 
 const Counter: FC = () => {
-  console.log("Counter render");
   // #region hooks start
-  const { zero, increment } = useImmerCounterStore((state) => {
+  const { increment } = useImmerCounterStore((state) => {
     const { zero, increment } = state;
-    console.log("======================");
-    console.log(zero);
 
     return {
       zero: zero,
       increment: increment,
     };
   }, shallow);
-  console.log("+++++++++++++++++++++++");
-  console.log(zero);
   // #endregion hooks end
 
   // #region useEffect functions start
   // #endregion useEffect functions end
 
   // #region logic functions start
+  const handleClick = () => {
+    console.log("handleClick");
+
+    increment();
+  };
   // #endregion logic functions end
 
   // #region render functions start
   return (
     <Space direction="vertical">
       <CountText />
-      <Button type="primary" onClick={increment}>
+      <Button type="primary" onClick={handleClick}>
         Add
       </Button>
     </Space>

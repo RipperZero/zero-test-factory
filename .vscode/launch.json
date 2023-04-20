@@ -3,21 +3,21 @@
     // 安装Code Runner插件
     // 运行当前JS代码片段
     {
+      "name": "Test",
       "type": "node",
       "request": "launch",
-      "name": "Test",
       "skipFiles": ["<node_internals>/**"],
       "program": "${file}"
     },
     // 以下均为 create react-app 脚手架创建出的相关项目的配置
     {
+      // Debug模式下 下拉菜单可以选择的配置名
+      "name": "Launch Chrome(must run porject)",
       "type": "chrome",
       "request": "launch",
-      // Debug模式下 下拉菜单可以选择的配置名
-      "name": "Launch Chrome against localhost",
       // 项目端口
-      "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}"
+      "url": "https://localhost:3000",
+      "webRoot": "${workspaceFolder}/src"
     },
     {
       "name": "Attach to Chrome",

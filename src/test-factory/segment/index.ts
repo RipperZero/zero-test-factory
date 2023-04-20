@@ -1,6 +1,7 @@
 // import { TestCapture } from "./TestCapture";
-import { UpdateArray } from "./UpdateArray";
+// import { UpdateArray } from "./UpdateArray";
+import { Counter } from "./Counter";
 
-const Segment = UpdateArray;
+const Segment = Counter;
 
 export { Segment };
