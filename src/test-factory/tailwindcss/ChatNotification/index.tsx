@@ -45,7 +45,20 @@ const ChatNotification: FC<ChatNotificationProps> = () => {
         </div>
       </div>
 
-      <button className="bg-sky-500 hover:bg-sky-700">Save changes</button>
+      <button className=" bg-sky-500 hover:bg-sky-700">Save changes</button>
+
+      <div className="container columns-2 gap-8 hover:columns-3">
+        {Array.from({ length: 10 }).map((_, index) => {
+          return <div key={index}>{index}</div>;
+        })}
+      </div>
+
+      <div className="columns-2">
+        <p>Well, let me tell you something, ...</p>
+        <p>Sure, go ahead, laugh...</p>
+        <p>Maybe we can live without...</p>
+        <p>Look. If you think this is...</p>
+      </div>
     </Space>
   );
   // #endregion render functions end
