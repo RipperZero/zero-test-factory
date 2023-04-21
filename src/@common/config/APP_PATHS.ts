@@ -11,4 +11,6 @@ export const APP_PATHS = {
   SEGMENT: `${BASEURL}segment`,
 
   TAILWIND: `${BASEURL}tailwind`,
+
+  REACTSPRING: `${BASEURL}react-spring`,
 } as const;
