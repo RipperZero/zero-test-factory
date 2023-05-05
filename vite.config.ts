@@ -10,7 +10,9 @@ export default defineConfig({
     react(),
     tsconfigPaths(),
     // @see https://github.com/liuweiGL/vite-plugin-mkcert
-    mkcert(),
+    mkcert({
+      source: "coding",
+    }),
   ],
   server: {
     port: 3000,
