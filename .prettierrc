@@ -23,7 +23,7 @@
 
   "importOrder": [
     "^vite$",
-    "^react$",
+    "^react",
     "^antd$",
     "<THIRD_PARTY_MODULES>",
     "^[./]"
