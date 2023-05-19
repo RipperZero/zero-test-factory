@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import { APP_PATHS } from "@common/config";
+import { APP_PATHS } from "routers";
 import { Antd } from "test-factory/antd";
 import { ReactSpring } from "test-factory/react-spring";
 import { Segment } from "test-factory/segment";
