@@ -1,11 +1,10 @@
 import axios from "axios";
-import qs from "qs";
-import { produce } from "immer";
-
 import type {
-  AxiosInstance as RawAxiosInstance,
   AxiosRequestConfig,
+  AxiosInstance as RawAxiosInstance,
 } from "axios";
+import { produce } from "immer";
+import qs from "qs";
 import type { IStringifyOptions } from "qs";
 
 import { getApiServerURL, getApiTimeOut } from "./envUtils";
@@ -13,7 +12,7 @@ import { getApiServerURL, getApiTimeOut } from "./envUtils";
 type Result<T> = {
   success: boolean;
   code: number;
-  msg: string;
+  message: string | null;
   data: T;
 };
 

@@ -1,19 +1,21 @@
 import { FC } from "react";
-import { BrowserRouter } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 
 import { ConfigProvider } from "antd";
 
 import { StyleProvider } from "@ant-design/cssinjs";
 import { QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { reactQueryClient } from "api";
+import { router } from "routers";
 
 import { ErrorBoundary } from "./ErrorBoundary";
-import { Router } from "./Router";
 
 const App: FC = () => {
   return (
     <ErrorBoundary>
       <QueryClientProvider client={reactQueryClient}>
+        {/* <ReactQueryDevtools /> */}
         <ConfigProvider
         // theme={{
         //   token: {
@@ -22,9 +24,7 @@ const App: FC = () => {
         // }}
         >
           <StyleProvider hashPriority="high">
-            <BrowserRouter>
-              <Router />
-            </BrowserRouter>
+            <RouterProvider router={router} />
           </StyleProvider>
         </ConfigProvider>
       </QueryClientProvider>

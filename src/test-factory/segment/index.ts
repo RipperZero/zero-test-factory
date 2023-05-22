@@ -1,8 +1,9 @@
 // import { TestCapture } from "./TestCapture";
 // import { UpdateArray } from "./UpdateArray";
 // import { Counter } from "./Counter";
-import { TestTouch } from "./TestTouch";
+// import { TestTouch } from "./TestTouch";
+import { TestReactQuery } from "./TestReactQuery";
 
-const Segment = TestTouch;
+const Segment = TestReactQuery;
 
 export { Segment };

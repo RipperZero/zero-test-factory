@@ -1,6 +1,6 @@
 const BASEURL = "/";
 
-export const APP_PATHS = {
+const APP_PATHS = {
   ROOT: BASEURL,
 
   /** TEMPLATE */
@@ -14,3 +14,5 @@ export const APP_PATHS = {
 
   REACTSPRING: `${BASEURL}react-spring`,
 } as const;
+
+export { APP_PATHS };
