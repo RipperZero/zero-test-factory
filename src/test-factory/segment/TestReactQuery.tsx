@@ -10,6 +10,7 @@ const TestReactQuery: FC = () => {
   const { data, isLoading } = useQuery({
     queryKey: ["users"],
     queryFn: findAllUser,
+    // enabled: false,
   });
   // #endregion hooks end
 

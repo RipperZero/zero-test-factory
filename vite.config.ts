@@ -28,7 +28,7 @@ export default defineConfig(({ mode }) => {
     envPrefix: ENV_PREFIX,
     base: base,
     server: {
-      port: 3000,
+      port: 1234,
       host: true,
       cors: true,
       https: true,
