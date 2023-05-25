@@ -13,4 +13,9 @@ declare module "@api.testFactory" {
     createdTime: string;
     modifiedTime: string;
   }>;
+
+  type RegisterUserReqParams = Pick<
+    FindAllUserResObj[0],
+    "username" | "password" | "idcard" | "email" | "mobile"
+  >;
 }

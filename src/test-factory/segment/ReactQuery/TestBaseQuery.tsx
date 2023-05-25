@@ -1,11 +1,10 @@
 import { FC } from "react";
 
-import { Spin } from "antd";
-
 import { useQuery } from "@tanstack/react-query";
 import { findAllUser } from "api";
+import { UserTable } from "test-factory/components";
 
-const TestReactQuery: FC = () => {
+const TestBaseQuery: FC = () => {
   // #region hooks start
   const { data, isLoading } = useQuery({
     queryKey: ["users"],
@@ -21,20 +20,8 @@ const TestReactQuery: FC = () => {
   // #endregion logic functions end
 
   // #region render functions start
-  return (
-    <>
-      {isLoading ? (
-        <Spin />
-      ) : (
-        <>
-          {data?.data.map((user) => {
-            return <div key={user.id}>{user.username}</div>;
-          })}
-        </>
-      )}
-    </>
-  );
+  return <UserTable loading={isLoading} userInfos={data?.data} />;
   // #endregion render functions end
 };
 
-export { TestReactQuery };
+export { TestBaseQuery };

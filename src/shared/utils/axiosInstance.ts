@@ -11,7 +11,7 @@ import { getApiServerURL, getApiTimeOut } from "./envUtils";
 
 type Result<T> = {
   success: boolean;
-  code: number;
+  code: number | null;
   message: string | null;
   data: T;
 };

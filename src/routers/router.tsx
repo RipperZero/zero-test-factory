@@ -9,7 +9,7 @@ import { Tailwind } from "test-factory/tailwindcss";
 
 const router = createBrowserRouter(
   [
-    { path: APP_PATHS.ROOT, element: <div>root</div> },
+    { path: APP_PATHS.ROOT, element: <div>ROOT</div> },
     { path: APP_PATHS.TEMPLATE, element: <div>template</div> },
     { path: APP_PATHS.ANTD, element: <Antd /> },
     { path: APP_PATHS.SEGMENT, element: <Segment /> },

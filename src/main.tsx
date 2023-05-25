@@ -7,7 +7,7 @@ import {
   renderWithQiankun,
 } from "vite-plugin-qiankun/dist/helper";
 
-import { App } from "./App";
+import { AppRoot } from "./AppRoot";
 import "./main.css";
 
 let root: Root | undefined = undefined;
@@ -23,7 +23,7 @@ const render = (props?: QiankunProps) => {
 
   root.render(
     <StrictMode>
-      <App />
+      <AppRoot />
     </StrictMode>,
   );
 };

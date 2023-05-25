@@ -2,9 +2,8 @@
 // import { UpdateArray } from "./UpdateArray";
 // import { Counter } from "./Counter";
 // import { TestMobile } from "./TestMobile";
+import { ReactQuery } from "./ReactQuery";
 
-import { TestReactQuery } from "./TestReactQuery";
-
-const Segment = TestReactQuery;
+const Segment = ReactQuery;
 
 export { Segment };
