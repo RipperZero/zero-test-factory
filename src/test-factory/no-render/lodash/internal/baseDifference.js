@@ -1,8 +1,8 @@
-import { SetCache } from "./SetCache";
+import { map } from "../map";
 import { arrayIncludes } from "./arrayIncludes";
 import { arrayIncludesWith } from "./arrayIncludesWith";
-import { map } from "../map";
 import { cacheHas } from "./cacheHas";
+import { SetCache } from "./SetCache";
 
 /** Used as the size to enable large array optimizations. */
 const LARGE_ARRAY_SIZE = 200;

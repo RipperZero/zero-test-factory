@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="./dialog.css" />
     <script async src="./dialog.js"></script>
     <title>Dialog</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <button id="button" onclick="btnOnClick()">Click Me!</button>
     <div class="overlay" id="overlay" onclick="closeDialog()"></div>
     <div id="dialog" class="dialog">
-        <span>活动收费</span>
-        <sapn class="close" onclick="closeDialog()">X</sapn>
-        <h3 class="title">活动收费</h3>
-        <div class="content">此活动需要收取报名费100元</div>
+      <span>活动收费</span>
+      <sapn class="close" onclick="closeDialog()">X</sapn>
+      <h3 class="title">活动收费</h3>
+      <div class="content">此活动需要收取报名费100元</div>
     </div>
-</body>
-
+  </body>
 </html>

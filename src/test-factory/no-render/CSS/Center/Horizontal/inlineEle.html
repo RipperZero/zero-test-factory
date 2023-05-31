@@ -1,42 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>inlineElement</title>
 
     <style>
-        #block_father {
-            width: 500px;
-            height: 300px;
-            background-color: skyblue;
-            /* 首先看它的父元素是不是块级元素，如果是，则直接给父元素设置 text-align: center; */
-            text-align: center;
-        }
+      #block_father {
+        width: 500px;
+        height: 300px;
+        background-color: skyblue;
+        /* 首先看它的父元素是不是块级元素，如果是，则直接给父元素设置 text-align: center; */
+        text-align: center;
+      }
 
-        #inline_father {
-            /* 如果不是，则先将其父元素设置为块级元素，再给父元素设置 text-align: center; */
-            display: block;
-            width: 500px;
-            height: 300px;
-            background-color: skyblue;
-            text-align: center;
-        }
+      #inline_father {
+        /* 如果不是，则先将其父元素设置为块级元素，再给父元素设置 text-align: center; */
+        display: block;
+        width: 500px;
+        height: 300px;
+        background-color: skyblue;
+        text-align: center;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>父级元素_block</h1>
     <div id="block_father">
-        <span id="son_a">行内元素</span>
+      <span id="son_a">行内元素</span>
     </div>
-    <hr>
+    <hr />
     <h1>父级元素_inline</h1>
     <span id="inline_father">
-        <span id="son_b">行内元素</span>
+      <span id="son_b">行内元素</span>
     </span>
-</body>
-
+  </body>
 </html>

@@ -1,9 +1,8 @@
 import { FC } from "react";
 
-import { Button, Form, Input, Space } from "antd";
-
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { RegisterUserReqParams } from "@api.testFactory";
+import { Button, Form, Input, Space } from "antd";
 import isEmail from "validator/es/lib/isEmail";
 import isIdentityCard from "validator/es/lib/isIdentityCard";
 import isMobilePhone from "validator/es/lib/isMobilePhone";

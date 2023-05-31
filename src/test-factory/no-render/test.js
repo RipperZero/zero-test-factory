@@ -9,7 +9,6 @@
 //   }
 // })();
 // ------------------------------------------------
-
 // ------------------------------------------------
 // 如何判断一个数组
 // 通过instanceof和constructor来判断不一定准确，因为可能会被重写。
@@ -18,7 +17,6 @@
 // console.log([].constructor === Array);
 // console.log(Object.prototype.toString.call([]));
 // ------------------------------------------------
-
 // ------------------------------------------------
 // 默认值只在undefined时生效
 // const testDefault = (param = 1) => {
@@ -26,7 +24,6 @@
 // };
 // console.log(testDefault(null));
 // ------------------------------------------------
-
 // ------------------------------------------------
 // const pA = () => {
 //   return new Promise((resolve, reject) => {
@@ -34,14 +31,12 @@
 //     // reject("Promise A reject");
 //   });
 // };
-
 // const pB = () => {
 //   return new Promise((resolve, reject) => {
 //     resolve("Promise B resolve");
 //     // reject("Promise B reject");
 //   });
 // };
-
 // const pC = () => {
 //   return new Promise((resolve, reject) => {
 //     // resolve("Promise C resolve");
@@ -66,7 +61,6 @@
 // });
 // console.timeEnd("asyncFun");
 // ------------------------------------------------
-
 // function spArr(arr, num) {
 //   //arr是你要分割的数组，num是以几个为一组
 //   let newArr = []; //首先创建一个新的空数组。用来存放分割好的数组
@@ -79,20 +73,17 @@
 // let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 // const splitArray = (arr, num) => {
 //   let newArr = [];
-
 //   for (let i = 0; i < arr.length; i += num) {
 //     newArr.push(arr.slice(i, i + num));
 //   }
-
 //   return newArr;
 // };
 // console.log(splitArray(arr, 4));
 // import { decode } from "js-base64";
 // const url = "http://10.167.23.70:3000/?companyCD=c3VwZXI=&companyID=MQ==";
-
 // console.log(decode("c3VwZXI="));
 // console.log(decode("MQ=="));
-import { round, divide, times, minus } from "number-precision";
+import { divide, minus, round, times } from "number-precision";
 
 const standardPrice = 66;
 const discount = 13.3;

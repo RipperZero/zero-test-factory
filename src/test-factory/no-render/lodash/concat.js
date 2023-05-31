@@ -1,4 +1,4 @@
-import { arrayPush, copyArray, baseFlatten } from "./internal";
+import { arrayPush, baseFlatten, copyArray } from "./internal";
 
 // export function concat() {
 //   var length = arguments.length;

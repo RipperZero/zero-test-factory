@@ -116,7 +116,7 @@ const ColorsObj = {
   yellow: "#FBC10B",
   green: "#0E7E60",
 } as const;
-type ValueType = typeof ColorsObj[keyof typeof ColorsObj];
+type ValueType = (typeof ColorsObj)[keyof typeof ColorsObj];
 const testFuncB = (param: ValueType) => {
   console.log(param);
 };

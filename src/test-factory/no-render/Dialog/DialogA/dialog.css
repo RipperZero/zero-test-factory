@@ -1,40 +1,40 @@
 /* 背景层 */
 #popLayer {
-    display: none;
-    background-color: #B3B3B3;
-    position: absolute;
-    margin: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 10;
-    -moz-opacity: 0.8;
-    opacity: .80;
+  display: none;
+  background-color: #b3b3b3;
+  position: absolute;
+  margin: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  -moz-opacity: 0.8;
+  opacity: 0.8;
 }
 
 #popBox {
-    display: none;
-    background-color: #FFFFFF;
-    z-index: 11;
-    width: 200px;
-    height: 200px;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    margin: auto;
+  display: none;
+  background-color: #ffffff;
+  z-index: 11;
+  width: 200px;
+  height: 200px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
 }
 
 #popBox .close {
-    text-align: right;
-    margin-right: 5px;
-    background-color: #F8F8F8;
+  text-align: right;
+  margin-right: 5px;
+  background-color: #f8f8f8;
 }
 
 /*关闭按钮*/
 #popBox .close a {
-    text-decoration: none;
-    color: #2D2C3B;
+  text-decoration: none;
+  color: #2d2c3b;
 }

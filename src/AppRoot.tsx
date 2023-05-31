@@ -1,10 +1,9 @@
 import { FC } from "react";
 import { RouterProvider } from "react-router-dom";
 
-import { App, ConfigProvider } from "antd";
-
 import { StyleProvider } from "@ant-design/cssinjs";
 import { QueryClientProvider } from "@tanstack/react-query";
+import { App, ConfigProvider } from "antd";
 // import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { reactQueryClient } from "api";
 import { router } from "routers";

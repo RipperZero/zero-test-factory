@@ -1,48 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>inlineElement</title>
 
     <style>
-        #single_father {
-            width: 500px;
-            height: 300px;
-            background-color: skyblue;
-        }
+      #single_father {
+        width: 500px;
+        height: 300px;
+        background-color: skyblue;
+      }
 
-        #single_son {
-            background-color: green;
-            line-height: 300px;
-        }
+      #single_son {
+        background-color: green;
+        line-height: 300px;
+      }
 
-        #mutil_father {
-            width: 500px;
-            height: 300px;
-            background-color: skyblue;
-            display: table-cell;
-            vertical-align: middle;
-        }
+      #mutil_father {
+        width: 500px;
+        height: 300px;
+        background-color: skyblue;
+        display: table-cell;
+        vertical-align: middle;
+      }
 
-        #mutil_son {
-            background-color: green;
-        }
+      #mutil_son {
+        background-color: green;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>单行行内元素</h1>
     <div id="single_father">
-        <span id="single_son">单行的行内元素</span>
+      <span id="single_son">单行的行内元素</span>
     </div>
-    <hr>
+    <hr />
     <h1>多行行内元素</h1>
     <div id="mutil_father">
-        <span id="mutil_son">多行的行内元素多行的行内元素多行的行内元素多行的行内元素多行的行内元素多行的行内元素多行的行内元素多行的行内元素多行的行内元素</span>
+      <span id="mutil_son"
+        >多行的行内元素多行的行内元素多行的行内元素多行的行内元素多行的行内元素多行的行内元素多行的行内元素多行的行内元素多行的行内元素</span
+      >
     </div>
-</body>
-
+  </body>
 </html>

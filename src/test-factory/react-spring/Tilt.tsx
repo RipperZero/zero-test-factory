@@ -1,9 +1,8 @@
 import { FC } from "react";
-
-import { Card, Col, Image, Row, Typography } from "antd";
+import ReactTilt from "react-parallax-tilt";
 
 import { animated, useSpring } from "@react-spring/web";
-import ReactTilt from "react-parallax-tilt";
+import { Card, Col, Image, Row, Typography } from "antd";
 
 import LakersImage from "../assets/img/Lakers.jpg";
 
