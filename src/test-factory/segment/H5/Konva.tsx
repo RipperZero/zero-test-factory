@@ -189,9 +189,9 @@ const Konva: FC<KonvaProps> = ({
         e.stopPropagation();
         e.preventDefault();
       }}
-      // onClick={() => {
-      //   console.log("ScrollList------ onClick");
-      // }}
+      onClick={() => {
+        console.log("ScrollList------ onClick");
+      }}
       // onTouchEnd={(e) => {
       //   console.log("ScrollList++++++ onTouchEnd");
       //   // console.log(e);
@@ -269,9 +269,20 @@ const Konva: FC<KonvaProps> = ({
           //   e.evt.stopPropagation();
           //   e.evt.preventDefault();
           // }}
-          // onClick={() => {
-          //   console.log("Stage------ onClick");
-          // }}
+          // Stage MouseEvent(H5) not support in
+          // konva 7.2.5 react-konva 17.0.1-3
+          onClick={() => {
+            console.log("Stage------ onClick");
+          }}
+          onMouseDown={() => {
+            console.log("Stage------ onMouseDown");
+          }}
+          onMouseUp={() => {
+            console.log("Stage------ onMouseUp");
+          }}
+          onMouseLeave={() => {
+            console.log("Stage------ onMouseLeave");
+          }}
           // onTouchEnd={(e: KonvaEventObject<TouchEvent>) => {
           //   console.log("Stage++++++ onTouchEnd");
           //   console.log(`target id -----${e.target.id()}`);
@@ -338,6 +349,24 @@ const Konva: FC<KonvaProps> = ({
 
                   onTap={onTap}
                   onDblTap={onDblTap}
+                  onTouchStart={() => {
+                    console.log("Image------ onTouchStart");
+                  }}
+                  onTouchEnd={() => {
+                    console.log("Image------ onTouchEnd");
+                  }}
+                  onClick={() => {
+                    console.log("Image------ onClick");
+                  }}
+                  onMouseDown={() => {
+                    console.log("Image------ onMouseDown");
+                  }}
+                  onMouseUp={() => {
+                    console.log("Image------ onMouseUp");
+                  }}
+                  onMouseLeave={() => {
+                    console.log("Image------ onMouseLeave");
+                  }}
                 />
               );
             })}
