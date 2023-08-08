@@ -41,11 +41,16 @@
 // }
 // const objB = new ZeroB().bFunc;
 // objB();
-import isEmail from "validator/lib/isEmail";
-import isMobilePhone from "validator/lib/isMobilePhone";
+// ==================================================== validator
+// import isEmail from "validator/lib/isEmail";
+// import isMobilePhone from "validator/lib/isMobilePhone";
+// const email = "123546@qq.com";
+// const mobilePhone = "15249203158";
+// console.log(isEmail(email));
+// console.log(isMobilePhone(mobilePhone, "zh-CN"));
+// ==================================================== js-base64
+import { stringify } from "qs";
 
-const email = "123546@qq.com";
-const mobilePhone = "15249203158";
+const params = { a: 1, b: 2, c: 3, d: 4 };
 
-console.log(isEmail(email));
-console.log(isMobilePhone(mobilePhone, "zh-CN"));
+console.log(`1234${stringify(params, { addQueryPrefix: true })}`);
