@@ -1,26 +1,28 @@
-const nums = [2, 7, 11, 15];
+const x = 0;
 
-const twoSum = (nums: number[], target: number): number[] => {
-  /**
-   * @param key previousNum from previous loop
-   * @param value previousValue's index
-   */
-  const previousNumMap = new Map<number, number>();
-
-  for (let index = 0; index < nums.length; index++) {
-    const currentNum = nums[index];
-    const gapNum = target - currentNum;
-
-    // gapNum === previousNum
-    if (previousNumMap.has(gapNum)) {
-      return [previousNumMap.get(gapNum)!, index];
-    }
-
-    // set currentNum to previousNumMap
-    previousNumMap.set(currentNum, index);
+const isPalindrome = (x: number): boolean => {
+  if (
+    // 负数
+    x < 0 ||
+    // 末位为0 首位也必须为0 只有0满足条件
+    (x % 10 === 0 && x !== 0)
+  ) {
+    return false;
   }
 
-  return [];
+  let revertedNumber = 0;
+
+  while (x > revertedNumber) {
+    revertedNumber = revertedNumber * 10 + (x % 10);
+    x = Math.floor(x / 10);
+  }
+
+  return (
+    // x位数为偶数
+    x === revertedNumber ||
+    // x位数为奇数 去除中位数
+    x === Math.floor(revertedNumber / 10)
+  );
 };
 
-console.log(twoSum(nums, 9));
+console.log(isPalindrome(x));
