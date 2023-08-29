@@ -1,28 +1,42 @@
-const x = 0;
+const nums = [1, 2, 3, 4, 5, 6, 7];
+const target = 9;
 
-const isPalindrome = (x: number): boolean => {
-  if (
-    // 负数
-    x < 0 ||
-    // 末位为0 首位也必须为0 只有0满足条件
-    (x % 10 === 0 && x !== 0)
-  ) {
-    return false;
+const searchInsert = (nums: number[], target: number): number => {
+  // leftIndex is result index
+  let leftIndex = 0;
+  let rightIndex = nums.length - 1;
+
+  if (nums.length === 0) {
+    return leftIndex;
   }
 
-  let revertedNumber = 0;
-
-  while (x > revertedNumber) {
-    revertedNumber = revertedNumber * 10 + (x % 10);
-    x = Math.floor(x / 10);
+  // targetNum not in array
+  if (target < nums[0]) {
+    return 0;
+  }
+  if (nums[nums.length - 1] < target) {
+    return nums.length;
   }
 
-  return (
-    // x位数为偶数
-    x === revertedNumber ||
-    // x位数为奇数 去除中位数
-    x === Math.floor(revertedNumber / 10)
-  );
+  while (leftIndex <= rightIndex) {
+    const middleIndex = leftIndex + ((rightIndex - leftIndex) >> 1);
+    const middleNum = nums[middleIndex];
+
+    if (middleNum === target) {
+      leftIndex = middleIndex;
+      break;
+    }
+
+    if (middleNum < target) {
+      leftIndex = middleIndex + 1;
+    }
+
+    if (target < middleNum) {
+      rightIndex = middleIndex - 1;
+    }
+  }
+
+  return leftIndex;
 };
 
-console.log(isPalindrome(x));
+console.log(searchInsert(nums, target));

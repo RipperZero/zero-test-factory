@@ -83,25 +83,11 @@
 // const url = "http://10.167.23.70:3000/?companyCD=c3VwZXI=&companyID=MQ==";
 // console.log(decode("c3VwZXI="));
 // console.log(decode("MQ=="));
-import { divide, minus, round, times } from "number-precision";
+// const strs = ["flower", "flow", "flight"];
+// const zero = () => {
+//   console.log(strs.shift());
+//   console.log(strs);
+// };
+// zero();
 
-const standardPrice = 66;
-const discount = 13.3;
-
-let _discountedPrice =
-  discount > 0
-    ? times(standardPrice, round(divide(discount, 100), 3))
-    : standardPrice;
-
-_discountedPrice = Math.floor(_discountedPrice);
-const singleDigitsOfDiscountedPrice = _discountedPrice % 10;
-
-/** 仕切価格 */
-const discountedPrice =
-  singleDigitsOfDiscountedPrice > 0
-    ? minus(_discountedPrice, singleDigitsOfDiscountedPrice)
-    : _discountedPrice;
-console.log(discountedPrice);
-
-// const num = 456987231324132.33333;
-// console.log(num.toLocaleString("ja", { style: "currency", currency: "JPY" }));
+console.log((-7 - 2) >> 1);

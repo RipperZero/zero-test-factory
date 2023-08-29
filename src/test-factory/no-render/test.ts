@@ -49,8 +49,3 @@
 // console.log(isEmail(email));
 // console.log(isMobilePhone(mobilePhone, "zh-CN"));
 // ==================================================== js-base64
-import { stringify } from "qs";
-
-const params = { a: 1, b: 2, c: 3, d: 4 };
-
-console.log(`1234${stringify(params, { addQueryPrefix: true })}`);
