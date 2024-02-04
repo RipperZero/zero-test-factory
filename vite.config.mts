@@ -31,7 +31,7 @@ export default defineConfig(({ mode }) => {
       port: 1234,
       host: true,
       cors: true,
-      https: true,
+      // https: true,
       // https: {
       //   pfx: readFileSync("cert/zeroKeystore.pfx"),
       //   passphrase: "123456",

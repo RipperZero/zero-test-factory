@@ -14,7 +14,7 @@ const TestMutation: FC<TestMutationProps> = () => {
   const { message } = App.useApp();
 
   // const queryClient = useQueryClient();
-  const { isLoading, mutate } = useMutation({
+  const { isPending, mutate } = useMutation({
     mutationFn: registerUser,
     onSuccess: (res) => {
       if (res.success) {
@@ -34,7 +34,7 @@ const TestMutation: FC<TestMutationProps> = () => {
   // #region render functions start
   return (
     <UserForm
-      loading={isLoading}
+      loading={isPending}
       onSubmit={(formValues) => {
         mutate(formValues);
       }}

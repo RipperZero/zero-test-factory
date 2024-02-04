@@ -215,3 +215,25 @@ export {};
 
 // type FunctionReturnType = ReturnType<FunctionType>; // boolean | string
 // -----------------------------------
+
+// type KeyofAny = keyof any;
+// type KeyofUnknown = keyof unknown;
+
+// const isString = (value: unknown): value is string => typeof value === "string";
+
+// const zero = (value: string | number) => {
+//   if (isString(value)) {
+//     value.toUpperCase();
+//   }
+// };
+
+const severity: "info" | "warning" | "error" | undefined = undefined;
+
+const a = {
+  info: "123",
+  warning: "456",
+  error: "789",
+  // @ts-ignore:next-line
+}[severity];
+
+console.log(a);

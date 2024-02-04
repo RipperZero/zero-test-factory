@@ -49,3 +49,42 @@
 // console.log(isEmail(email));
 // console.log(isMobilePhone(mobilePhone, "zh-CN"));
 // ==================================================== js-base64
+// const a: number[] = [1];
+// const b: number[] = [];
+// const c = [...a, ...b];
+// console.log(Math.max(...c) >= 0);
+// const params = { a: 111, b: "bbb" };
+// const empty = {};
+// // @ts-ignore:next-line
+// const { a, b, c, ...rest } = empty;
+// console.log(a);
+// console.log(b);
+// console.log(c);
+// console.log(rest);
+// const d = undefined;
+// const e = {};
+// // @ts-ignore:next-line
+// console.log({ ...d });
+// /**
+//  * truncateByBytes
+//  * @param str
+//  * @param byteLimit
+//  */
+// export const truncateByBytes = (str: string, byteLimit: number) => {
+//   // 将字符串转换为UTF-8编码的字节序列
+//   let byteSeq = new TextEncoder().encode(str);
+//   console.log("bvefore byteSeq", byteSeq);
+//   // 如果字节数超过限制，截取字节序列
+//   if (byteSeq.length > byteLimit) {
+//     byteSeq = byteSeq.slice(0, byteLimit);
+//   }
+//   console.log("after byteSeq", byteSeq);
+//   // 将字节序列转换回字符串
+//   let resultStr = new TextDecoder().decode(byteSeq);
+//   return resultStr;
+// };
+// const str = "123456789あ";
+// // const str = "123456789啊";
+// const truncated = truncateByBytes(str, 10);
+// console.log(truncated);
+// console.log(new TextEncoder().encode(truncated));

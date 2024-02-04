@@ -89,5 +89,30 @@
 //   console.log(strs);
 // };
 // zero();
+// Object.keys(obj).length === 0
+// const a = {};
+// const { b, ...rest } = a;
+// console.log("b", b);
+// console.log("rest", rest);
 
-console.log((-7 - 2) >> 1);
+// const array = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+
+// const aaa = () => {
+//   try {
+//     array.forEach((item) => {
+//       if (item === 5) {
+//         throw Error;
+//       }
+
+//       console.log(item);
+//     });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
+// aaa();
+
+const num = 1111;
+
+console.log(num.toLocaleString("ja", { currency: "JPY" }));

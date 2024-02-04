@@ -1,42 +1,28 @@
-const nums = [1, 2, 3, 4, 5, 6, 7];
-const target = 9;
+const x = 8;
 
-const searchInsert = (nums: number[], target: number): number => {
-  // leftIndex is result index
-  let leftIndex = 0;
-  let rightIndex = nums.length - 1;
+/**
+ * 使用二分查找 对middle进行取整
+ */
+const mySqrt = (x: number): number => {
+  let leftNum = 0;
+  let rightNum = x;
+  let result = 0;
 
-  if (nums.length === 0) {
-    return leftIndex;
-  }
+  while (leftNum <= rightNum) {
+    const middleNum = Math.floor(leftNum + (rightNum - leftNum) / 2);
+    const middleNumSqrt = middleNum * middleNum;
 
-  // targetNum not in array
-  if (target < nums[0]) {
-    return 0;
-  }
-  if (nums[nums.length - 1] < target) {
-    return nums.length;
-  }
-
-  while (leftIndex <= rightIndex) {
-    const middleIndex = leftIndex + ((rightIndex - leftIndex) >> 1);
-    const middleNum = nums[middleIndex];
-
-    if (middleNum === target) {
-      leftIndex = middleIndex;
-      break;
+    if (middleNumSqrt <= x) {
+      result = middleNum;
+      leftNum = middleNum + 1;
     }
 
-    if (middleNum < target) {
-      leftIndex = middleIndex + 1;
-    }
-
-    if (target < middleNum) {
-      rightIndex = middleIndex - 1;
+    if (x < middleNumSqrt) {
+      rightNum = middleNum - 1;
     }
   }
 
-  return leftIndex;
+  return result;
 };
 
-console.log(searchInsert(nums, target));
+console.log(mySqrt(x));

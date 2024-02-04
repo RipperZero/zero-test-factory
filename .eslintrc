@@ -1,6 +1,11 @@
 {
   "extends": ["react-app", "prettier"],
+  "plugins": ["react-refresh"],
   "rules": {
     // "react/jsx-pascal-case": ["warn", { "allowLeadingUnderscore": true }]
+    "react-refresh/only-export-components": [
+      "warn",
+      { "allowConstantExport": true }
+    ]
   }
 }
