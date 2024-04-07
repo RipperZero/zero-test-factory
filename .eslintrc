@@ -5,7 +5,7 @@
     // "react/jsx-pascal-case": ["warn", { "allowLeadingUnderscore": true }]
     "react-refresh/only-export-components": [
       "warn",
-      { "allowConstantExport": true }
-    ]
-  }
+      { "allowConstantExport": true },
+    ],
+  },
 }
