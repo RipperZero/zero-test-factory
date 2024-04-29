@@ -94,25 +94,68 @@
 // const { b, ...rest } = a;
 // console.log("b", b);
 // console.log("rest", rest);
-
 // const array = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-
 // const aaa = () => {
 //   try {
 //     array.forEach((item) => {
 //       if (item === 5) {
 //         throw Error;
 //       }
-
 //       console.log(item);
 //     });
 //   } catch (error) {
 //     console.log(error);
 //   }
 // };
-
 // aaa();
+// function baz() {
+//   // 当前调用栈是：baz
+//   // 因此，当前调用位置是全局作用域
+//   console.log("baz");
+//   bar(); // <-- bar的调用位置
+// }
+// function bar() {
+//   // 当前调用栈是baz -> bar
+//   // 因此，当前调用位置在baz中
+//   console.log("bar");
+//   foo(); // <-- foo的调用位置
+// }
+// function foo() {
+//   // 当前调用栈是baz -> bar -> foo
+//   // 因此，当前调用位置在bar中
+//   console.log("foo");
+// }
+// baz(); // <-- baz的调用位置
+// function foo() {
+//   console.log(this.a);
+// }
+// const foo = () => {
+//   console.log(this.a);
+// };
+// const obj = {
+//   a: 2,
+//   foo: foo,
+// };
+// obj.foo();
+// import { cloneDeep, merge } from "lodash";
+// const object = {
+//   a: [{ b: 2, c: 2 }, { d: 4 }],
+//   x: { x1: [1, 2], x2: [{ x21: 666, x33: 999 }] },
+//   y: 88888,
+// };
+// const other = {
+//   a: [{ c: 3 }, { e: 5 }],
+//   x: { x1: [0, 1, 2], x2: [{ x21: 777, x22: 888 }] },
+//   z: "湖人总冠军！！！",
+// };
+// const mergeResultWithCloneDeep = merge(cloneDeep(object), other);
+// console.log("object", object);
+// console.log("other", other);
+// console.log("mergeResultWithCloneDeep", mergeResultWithCloneDeep);
+// console.log(object === mergeResultWithCloneDeep);
+// console.log([...(undefined ?? []), ...[1, 2, 3]]);
+const isEmptyObject = (obj) => {
+  return Object.keys(obj).length === 0;
+};
 
-const num = 1111;
-
-console.log(num.toLocaleString("ja", { currency: "JPY" }));
+console.log(isEmptyObject(null));

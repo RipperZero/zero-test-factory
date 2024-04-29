@@ -88,3 +88,30 @@
 // const truncated = truncateByBytes(str, 10);
 // console.log(truncated);
 // console.log(new TextEncoder().encode(truncated));
+
+const list = [
+  {
+    key: "1",
+    a: 123,
+    b: "bbb111",
+  },
+  {
+    key: "2",
+    a: 456,
+    b: "bbb222",
+  },
+];
+
+const convertListToKeyMap = <T extends { key: string }>(list: T[]) => {
+  const keyMap = new Map<string, Omit<T, "key">>();
+
+  list.forEach((item) => {
+    const { key, ...rest } = item;
+
+    keyMap.set(key, rest);
+  });
+
+  return keyMap;
+};
+
+console.log(convertListToKeyMap(list).get("1"));

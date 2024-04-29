@@ -1,11 +1,17 @@
 import { defineConfig, loadEnv } from "vite";
 
 import react from "@vitejs/plugin-react";
-// import { readFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
+import { ServerOptions } from "node:https";
 import mkcert from "vite-plugin-mkcert";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 const ENV_PREFIX = "ENV_";
+
+// const httpsOptions: ServerOptions = {
+//   pfx: readFileSync("cert/zeroKeystore.pfx"),
+//   passphrase: "123456",
+// };
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -31,11 +37,7 @@ export default defineConfig(({ mode }) => {
       port: 1234,
       host: true,
       cors: true,
-      // https: true,
-      // https: {
-      //   pfx: readFileSync("cert/zeroKeystore.pfx"),
-      //   passphrase: "123456",
-      // },
+      // https: httpsOptions,
     },
   };
 });

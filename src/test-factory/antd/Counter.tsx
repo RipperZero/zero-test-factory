@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 
 import { Button, Space, Typography } from "antd";
 import { create } from "zustand";
@@ -54,7 +54,24 @@ const Counter: FC = () => {
   }, shallow);
   // #endregion hooks end
 
+  const [aaa, setaaa] = useState(0);
+
   // #region useEffect functions start
+  useEffect(() => {
+    setTimeout(() => {
+      setaaa(aaa + 1);
+      setaaa(aaa + 1);
+      setaaa(aaa + 1);
+    }, 2000);
+  }, [aaa]);
+
+  setTimeout(() => {
+    Promise.resolve(true);
+    // setaaa(aaa + 1);
+    // setaaa(aaa + 1);
+    // setaaa(aaa + 1);
+    // console.log(aaa);
+  }, 2000);
   // #endregion useEffect functions end
 
   // #region logic functions start
