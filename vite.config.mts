@@ -39,5 +39,10 @@ export default defineConfig(({ mode }) => {
       cors: true,
       // https: httpsOptions,
     },
+    resolve: {
+      alias: {
+        lodash: "lodash-es",
+      },
+    },
   };
 });

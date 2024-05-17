@@ -88,30 +88,21 @@
 // const truncated = truncateByBytes(str, 10);
 // console.log(truncated);
 // console.log(new TextEncoder().encode(truncated));
+// @ts-ignore:next-line
+import { cloneDeep, merge } from "lodash-es";
 
-const list = [
-  {
-    key: "1",
-    a: 123,
-    b: "bbb111",
-  },
-  {
-    key: "2",
-    a: 456,
-    b: "bbb222",
-  },
-];
-
-const convertListToKeyMap = <T extends { key: string }>(list: T[]) => {
-  const keyMap = new Map<string, Omit<T, "key">>();
-
-  list.forEach((item) => {
-    const { key, ...rest } = item;
-
-    keyMap.set(key, rest);
-  });
-
-  return keyMap;
+const object = {
+  a: [{ b: 2, c: 2 }, { d: 4 }],
+  x: { x1: [1, 2], x2: [{ x21: 666, x33: 999 }] },
+  y: 88888,
 };
-
-console.log(convertListToKeyMap(list).get("1"));
+const other = {
+  a: [{ c: 3 }, { e: 5 }],
+  x: { x1: [0, 1, 2], x2: [{ x21: 777, x22: 888 }] },
+  z: "湖人总冠军！！！",
+};
+const mergeResultWithCloneDeep = merge(cloneDeep(object), other);
+console.log("object", object);
+console.log("other", other);
+console.log("mergeResultWithCloneDeep", mergeResultWithCloneDeep);
+console.log(object === mergeResultWithCloneDeep);

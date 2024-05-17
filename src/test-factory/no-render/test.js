@@ -137,25 +137,50 @@
 //   foo: foo,
 // };
 // obj.foo();
-// import { cloneDeep, merge } from "lodash";
-// const object = {
-//   a: [{ b: 2, c: 2 }, { d: 4 }],
-//   x: { x1: [1, 2], x2: [{ x21: 666, x33: 999 }] },
-//   y: 88888,
-// };
-// const other = {
-//   a: [{ c: 3 }, { e: 5 }],
-//   x: { x1: [0, 1, 2], x2: [{ x21: 777, x22: 888 }] },
-//   z: "湖人总冠军！！！",
-// };
-// const mergeResultWithCloneDeep = merge(cloneDeep(object), other);
-// console.log("object", object);
-// console.log("other", other);
-// console.log("mergeResultWithCloneDeep", mergeResultWithCloneDeep);
-// console.log(object === mergeResultWithCloneDeep);
-// console.log([...(undefined ?? []), ...[1, 2, 3]]);
-const isEmptyObject = (obj) => {
-  return Object.keys(obj).length === 0;
-};
+import { cloneDeep, merge } from "lodash-es";
 
-console.log(isEmptyObject(null));
+const object = {
+  a: [{ b: 2, c: 2 }, { d: 4 }],
+  x: { x1: [1, 2], x2: [{ x21: 666, x33: 999 }] },
+  y: 88888,
+};
+const other = {
+  a: [{ c: 3 }, { e: 5 }],
+  x: { x1: [0, 1, 2], x2: [{ x21: 777, x22: 888 }] },
+  z: "湖人总冠军！！！",
+};
+const mergeResultWithCloneDeep = merge(cloneDeep(object), other);
+console.log("object", object);
+console.log("other", other);
+console.log("mergeResultWithCloneDeep", mergeResultWithCloneDeep);
+console.log(object === mergeResultWithCloneDeep);
+// console.log([...(undefined ?? []), ...[1, 2, 3]]);
+// const isEmptyObject = (obj) => {
+//   return Object.keys(obj).length === 0;
+// };
+// console.log(isEmptyObject(null));
+// import { clsx } from "clsx";
+// import { mergeWith } from "lodash";
+
+// const menuClasses = {
+//   paper: "MuiMenu-paper",
+//   list: "MuiMenu-list",
+// };
+
+// const customMenuClasses = {
+//   a: "bb",
+//   paper: "123",
+//   list: "456",
+// };
+
+// const mergeClasses = (source, target) => {
+//   return mergeWith(source, target, (sourceValue, targetValue) => {
+//     console.log("sourceValue ===>>>", sourceValue);
+//     console.log("targetValue ===>>>", targetValue);
+
+//     // return 123456;
+//     return clsx(sourceValue, targetValue);
+//   });
+// };
+
+// console.log(mergeClasses(undefined, undefined));
