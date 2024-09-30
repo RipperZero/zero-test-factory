@@ -22,10 +22,12 @@
   ],
 
   "importOrder": [
-    "^vite$",
+    "^(vite|@vite)",
     "^react",
-    "^ant$",
+    "^antd",
     "<THIRD_PARTY_MODULES>",
+    "^@api.",
+    "^[@/]",
     "^[./]"
   ],
   "importOrderSeparation": true,

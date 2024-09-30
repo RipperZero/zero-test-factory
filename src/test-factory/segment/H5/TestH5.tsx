@@ -9,8 +9,9 @@ import {
 
 import { produce } from "immer";
 
-import Food from "../../assets/img/Food.jpg";
-import LakersLogo from "../../assets/img/LakersLogo.jpg";
+import Food from "@/test-factory/assets/img/Food.jpg";
+import LakersLogo from "@/test-factory/assets/img/LakersLogo.jpg";
+
 import { useHandleClick } from "./hook/useHandleClick";
 import { Konva } from "./Konva";
 

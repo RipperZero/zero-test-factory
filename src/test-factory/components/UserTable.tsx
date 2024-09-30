@@ -1,7 +1,8 @@
 import { FC, Key } from "react";
 
-import { FindAllUserResObj } from "@api.testFactory";
 import Table, { ColumnsType } from "antd/es/table";
+
+import { FindAllUserResObj } from "@api.testFactory";
 
 type UserTableProps = {
   loading?: boolean;

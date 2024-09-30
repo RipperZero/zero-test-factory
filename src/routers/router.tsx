@@ -1,11 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import { APP_PATHS } from "routers";
-import { getBaseURL } from "shared/utils/envUtils";
-import { Antd } from "test-factory/antd";
-import { ReactSpring } from "test-factory/react-spring";
-import { Segment } from "test-factory/segment";
-import { Tailwind } from "test-factory/tailwindcss";
+import { getBaseURL } from "@/shared/utils/envUtils";
+import { Antd } from "@/test-factory/antd";
+import { ReactSpring } from "@/test-factory/react-spring";
+import { Segment } from "@/test-factory/segment";
+import { Tailwind } from "@/test-factory/tailwindcss";
+
+import { APP_PATHS } from "./APP_PATHS";
 
 const router = createBrowserRouter(
   [

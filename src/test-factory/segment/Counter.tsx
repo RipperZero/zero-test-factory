@@ -2,11 +2,16 @@ import { FC, useState } from "react";
 
 import { Button, Space, Typography } from "antd";
 
+// import { abortGetUsers, getUsers } from "@/api";
+import { abortGetUsers, getUsers } from "../../api";
+
 type CounterProps = {};
 
 const Counter: FC<CounterProps> = () => {
   // #region hooks start
   const [count, setCount] = useState(0);
+
+  // const deferredCount = useDeferredValue(count);
   // #endregion hooks end
 
   // #region useEffect functions start
@@ -26,6 +31,28 @@ const Counter: FC<CounterProps> = () => {
       <Typography.Text>{count}</Typography.Text>
       <Button type="primary" onClick={handleAdd}>
         Add
+      </Button>
+      <Button
+        type="primary"
+        onClick={() => {
+          getUsers()
+            .then((res) => {
+              console.log(res);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }}
+      >
+        Request
+      </Button>
+      <Button
+        type="primary"
+        onClick={() => {
+          abortGetUsers();
+        }}
+      >
+        Abort
       </Button>
     </Space>
   );

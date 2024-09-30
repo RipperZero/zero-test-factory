@@ -1,10 +1,13 @@
-import { defineConfig, loadEnv } from "vite";
-
 import react from "@vitejs/plugin-react";
+import { defineConfig, loadEnv } from "vite";
+import mkcert from "vite-plugin-mkcert";
+import progress from "vite-plugin-progress";
+import tsconfigPaths from "vite-tsconfig-paths";
+
 import { readFileSync } from "node:fs";
 import { ServerOptions } from "node:https";
-import mkcert from "vite-plugin-mkcert";
-import tsconfigPaths from "vite-tsconfig-paths";
+// import { resolve } from "node:path";
+import picocolors from "picocolors";
 
 const ENV_PREFIX = "ENV_";
 
@@ -17,11 +20,15 @@ const ENV_PREFIX = "ENV_";
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), ENV_PREFIX);
   const base = env.ENV_APP_BASE_URL;
+  const { bold, green, cyan } = picocolors;
 
   return {
     plugins: [
       react(),
       tsconfigPaths(),
+      progress({
+        format: `${green(bold("Building"))} ${cyan("[:bar]")} :percent`,
+      }),
 
       // @see https://github.com/liuweiGL/vite-plugin-mkcert
       // provide temp certificate(just in dev) to support for vite https development services
@@ -42,6 +49,20 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         lodash: "lodash-es",
+        // "@": resolve(__dirname, "./src"),
+      },
+    },
+    build: {
+      // outDir: "dist",
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            react: ["react", "react-dom", "react-router-dom"],
+          },
+          chunkFileNames: "assets/js/[name]-[hash].js",
+          entryFileNames: "assets/js/[name]-[hash].js",
+          assetFileNames: "assets/[ext]/[name]-[hash].[ext]",
+        },
       },
     },
   };

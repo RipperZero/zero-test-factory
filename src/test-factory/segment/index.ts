@@ -6,6 +6,6 @@ import { ReactQuery } from "./ReactQuery";
 import { TestCapture } from "./TestCapture";
 import { UpdateArray } from "./UpdateArray";
 
-const Segment = Flex;
+const Segment = TestH5;
 
 export { Segment };

@@ -89,20 +89,43 @@
 // console.log(truncated);
 // console.log(new TextEncoder().encode(truncated));
 // @ts-ignore:next-line
-import { cloneDeep, merge } from "lodash-es";
+// import { cloneDeep, merge } from "lodash-es";
+// const object = {
+//   a: [{ b: 2, c: 2 }, { d: 4 }],
+//   x: { x1: [1, 2], x2: [{ x21: 666, x33: 999 }] },
+//   y: 88888,
+// };
+// const other = {
+//   a: [{ c: 3 }, { e: 5 }],
+//   x: { x1: [0, 1, 2], x2: [{ x21: 777, x22: 888 }] },
+//   z: "湖人总冠军！！！",
+// };
+// const mergeResultWithCloneDeep = merge(cloneDeep(object), other);
+// console.log("object", object);
+// console.log("other", other);
+// console.log("mergeResultWithCloneDeep", mergeResultWithCloneDeep);
+// console.log(object === mergeResultWithCloneDeep);
+// const extractAfterFirstSpace = (input: string) => {
+//   // Match the first sequence of non-space characters (including half-width and full-width spaces)
+//   // and the following spaces
+//   const result = input.replace(/^[^\s　]*[\s　]+/, "");
+//   return result;
+// };
+// console.log(extractAfterFirstSpace("01 　123 456"));
+import dayjs from "dayjs";
+import "dayjs/locale/ja";
 
-const object = {
-  a: [{ b: 2, c: 2 }, { d: 4 }],
-  x: { x1: [1, 2], x2: [{ x21: 666, x33: 999 }] },
-  y: 88888,
-};
-const other = {
-  a: [{ c: 3 }, { e: 5 }],
-  x: { x1: [0, 1, 2], x2: [{ x21: 777, x22: 888 }] },
-  z: "湖人总冠军！！！",
-};
-const mergeResultWithCloneDeep = merge(cloneDeep(object), other);
-console.log("object", object);
-console.log("other", other);
-console.log("mergeResultWithCloneDeep", mergeResultWithCloneDeep);
-console.log(object === mergeResultWithCloneDeep);
+// console.log(dayjs(a));
+// console.log(dayjs(a).isValid());
+// console.log(dayjs(a).format("YYYYMMDD"));
+
+const today = dayjs();
+const birth = dayjs(String(20240806), "YYYYMMDD");
+
+// 1725951031155
+
+const formattedDate = dayjs(1725951031155)
+  .locale("ja")
+  .format("YYYY/MM/DD(ddd) HH:mm");
+
+console.log(formattedDate);

@@ -137,50 +137,51 @@
 //   foo: foo,
 // };
 // obj.foo();
-import { cloneDeep, merge } from "lodash-es";
-
-const object = {
-  a: [{ b: 2, c: 2 }, { d: 4 }],
-  x: { x1: [1, 2], x2: [{ x21: 666, x33: 999 }] },
-  y: 88888,
-};
-const other = {
-  a: [{ c: 3 }, { e: 5 }],
-  x: { x1: [0, 1, 2], x2: [{ x21: 777, x22: 888 }] },
-  z: "湖人总冠军！！！",
-};
-const mergeResultWithCloneDeep = merge(cloneDeep(object), other);
-console.log("object", object);
-console.log("other", other);
-console.log("mergeResultWithCloneDeep", mergeResultWithCloneDeep);
-console.log(object === mergeResultWithCloneDeep);
-// console.log([...(undefined ?? []), ...[1, 2, 3]]);
-// const isEmptyObject = (obj) => {
-//   return Object.keys(obj).length === 0;
+// import { cloneDeep, merge } from "lodash-es";
+// const object = {
+//   a: [{ b: 2, c: 2 }, { d: 4 }],
+//   x: { x1: [1, 2], x2: [{ x21: 666, x33: 999 }] },
+//   y: 88888,
 // };
-// console.log(isEmptyObject(null));
-// import { clsx } from "clsx";
-// import { mergeWith } from "lodash";
-
-// const menuClasses = {
-//   paper: "MuiMenu-paper",
-//   list: "MuiMenu-list",
+// const other = {
+//   a: [{ c: 3 }, { e: 5 }],
+//   x: { x1: [0, 1, 2], x2: [{ x21: 777, x22: 888 }] },
+//   z: "湖人总冠军！！！",
 // };
-
-// const customMenuClasses = {
-//   a: "bb",
-//   paper: "123",
-//   list: "456",
+// const mergeResultWithCloneDeep = merge(cloneDeep(object), other);
+// console.log("object", object);
+// console.log("other", other);
+// console.log("mergeResultWithCloneDeep", mergeResultWithCloneDeep);
+// console.log(object === mergeResultWithCloneDeep);
+// import { gzip, inflate } from "pako";
+// const fs = require("fs");
+// const pako = require("pako");
+// const requestParams = {
+//   operationName: "getKanjyaHokenToKouhiPattern",
+//   variables: {
+//     kanjyaNo: "0000000010",
+//     isAdd: false,
+//   },
+//   query:
+//     "fragment HokenPattern on HokenPatternModel {\n  id\n  syuhokenPatternNo\n  hokenNo\n  tokkiJikou\n  yuutaiCode\n  youshiNo\n  gendogaku\n  gairaiPatternHutan\n  shikko\n  jihiHokenPatternKubun\n  kaikeiFlag\n  kaikeiTsuki\n  hokenModels {\n    hokenNo\n    hokenjyaNo\n    kigou\n    hokenName\n    tekiyouEnd\n    shikkoCard\n    hokenKubun\n    __typename\n  }\n  __typename\n}\n\nfragment JihiHokenPattern on HokenPatternModel {\n  jihiHokenPatternItemName\n  ...HokenPattern\n  __typename\n}\n\nquery getKanjyaHokenToKouhiPattern($kanjyaNo: String!, $isAdd: Boolean) {\n  getKanjyaHokenToKouhiPattern(kanjyaNo: $kanjyaNo, isAdd: $isAdd) {\n    hokenPatterns {\n      ...HokenPattern\n      __typename\n    }\n    jihiHokenPatterns {\n      ...JihiHokenPattern\n      __typename\n    }\n    type\n    message\n    __typename\n  }\n}\n",
 // };
-
-// const mergeClasses = (source, target) => {
-//   return mergeWith(source, target, (sourceValue, targetValue) => {
-//     console.log("sourceValue ===>>>", sourceValue);
-//     console.log("targetValue ===>>>", targetValue);
-
-//     // return 123456;
-//     return clsx(sourceValue, targetValue);
-//   });
+// const zip = pako.gzip(JSON.stringify(requestParams));
+// console.log(zip);
+// console.log(pako.ungzip(zip, { to: "string" }));
+// const binaryString = fs.readFileSync("src/_temp/zero.txt", {
+//   encoding: "binary",
+// });
+// console.log(binaryString);
+// // 将二进制字符串转换为Uint8Array
+// const binaryStringToUint8Array = (binaryString) => {
+//   const len = binaryString.length;
+//   const bytes = new Uint8Array(len);
+//   for (let i = 0; i < len; i++) {
+//     bytes[i] = binaryString.charCodeAt(i);
+//   }
+//   return bytes;
 // };
-
-// console.log(mergeClasses(undefined, undefined));
+// // 将读取到的文件内容转换为Uint8Array
+// const uint8Array = binaryStringToUint8Array(binaryString);
+// console.log(uint8Array);
+// console.log(pako.ungzip(uint8Array, { to: "string" }));

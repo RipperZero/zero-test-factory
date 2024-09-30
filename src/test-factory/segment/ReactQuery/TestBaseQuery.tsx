@@ -1,8 +1,8 @@
 import { FC } from "react";
 
+import { findAllUser } from "@/api";
+import { UserTable } from "@/test-factory/components";
 import { useQuery } from "@tanstack/react-query";
-import { findAllUser } from "api";
-import { UserTable } from "test-factory/components";
 
 const TestBaseQuery: FC = () => {
   // #region hooks start

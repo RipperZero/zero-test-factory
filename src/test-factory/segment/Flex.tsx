@@ -13,7 +13,7 @@ const calculateCardWidth = (arrayLength: number) => {
 
 const cardWidth = calculateCardWidth(cardCount);
 
-const Flex: FC<FlexProps> = ({}) => {
+const Flex: FC<FlexProps> = () => {
   // #region hooks start
   // #endregion hooks end
 

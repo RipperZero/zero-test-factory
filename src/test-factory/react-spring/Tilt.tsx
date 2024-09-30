@@ -1,10 +1,10 @@
 import { FC } from "react";
 import ReactTilt from "react-parallax-tilt";
 
-import { animated, useSpring } from "@react-spring/web";
 import { Card, Col, Image, Row, Typography } from "antd";
 
-import LakersImage from "../assets/img/Lakers.jpg";
+import LakersImage from "@/test-factory/assets/img/Lakers.jpg";
+import { animated, useSpring } from "@react-spring/web";
 
 // @see https://codesandbox.io/s/l2pqqzqmmq?file=/src/index.js
 

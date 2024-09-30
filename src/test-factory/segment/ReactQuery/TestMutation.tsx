@@ -1,11 +1,12 @@
 import { FC } from "react";
 
+import { App } from "antd";
+
+import { registerUser } from "@/api";
+import { UserForm } from "@/test-factory/components/UserForm";
 import {
   useMutation, // useQueryClient
 } from "@tanstack/react-query";
-import { App } from "antd";
-import { registerUser } from "api";
-import { UserForm } from "test-factory/components/UserForm";
 
 type TestMutationProps = {};
 
