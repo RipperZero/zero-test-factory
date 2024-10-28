@@ -112,20 +112,9 @@
 //   return result;
 // };
 // console.log(extractAfterFirstSpace("01 　123 456"));
-import dayjs from "dayjs";
-import "dayjs/locale/ja";
+import { isEmpty, isFunction, isObject } from "radash";
+import { isPromise } from "util/types";
 
-// console.log(dayjs(a));
-// console.log(dayjs(a).isValid());
-// console.log(dayjs(a).format("YYYYMMDD"));
+const obj = {};
 
-const today = dayjs();
-const birth = dayjs(String(20240806), "YYYYMMDD");
-
-// 1725951031155
-
-const formattedDate = dayjs(1725951031155)
-  .locale("ja")
-  .format("YYYY/MM/DD(ddd) HH:mm");
-
-console.log(formattedDate);
+console.log(isPromise(new Promise(() => {})));

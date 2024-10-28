@@ -185,3 +185,27 @@
 // const uint8Array = binaryStringToUint8Array(binaryString);
 // console.log(uint8Array);
 // console.log(pako.ungzip(uint8Array, { to: "string" }));
+
+const array = Array.from({ length: 6 }, (_, index) => {
+  return index + 1;
+});
+
+// for (let index = 0; index < array.length; index++) {
+//   const element = array[index];
+
+//   console.log(element);
+
+//   if (element === 4) {
+//     console.log("break");
+//     break;
+//   }
+// }
+
+for (const element of array) {
+  console.log(element);
+
+  if (element === 4) {
+    console.log("break");
+    break;
+  }
+}

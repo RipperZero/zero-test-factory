@@ -2,8 +2,8 @@ import { GetUsersResObj } from "@api.mockAPI";
 
 import { axiosInstance } from "@/shared/utils/axiosInstance";
 
-axiosInstance.defaults.baseURL =
-  "https://6643258f3c01a059ea21adf8.mockapi.io/api";
+// axiosInstance.defaults.baseURL =
+//   "https://6643258f3c01a059ea21adf8.mockapi.io/api";
 
 const getUsersManager = () => {
   const abortControllerMap = new Map<number, AbortController>();
