@@ -1,9 +1,9 @@
 import { FC, useEffect, useState } from "react";
 
 import { Button, Space, Typography } from "antd";
+
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
-import { shallow } from "zustand/shallow";
 
 type CounterState = {
   count: number;
@@ -51,7 +51,7 @@ const Counter: FC = () => {
       zero: zero,
       increment: increment,
     };
-  }, shallow);
+  });
   // #endregion hooks end
 
   const [aaa, setaaa] = useState(0);
