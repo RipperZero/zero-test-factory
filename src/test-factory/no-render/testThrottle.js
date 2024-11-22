@@ -28,3 +28,9 @@ const throttleB = function (fn, delay) {
     }
   };
 };
+
+const bbb = (arg) => {
+  console.log("arg =>>>", arg);
+};
+
+const b = throttleB(bbb, 1000);

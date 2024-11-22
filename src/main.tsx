@@ -1,11 +1,11 @@
-import { StrictMode } from "react";
-import { createRoot, Root } from "react-dom/client";
-
 import {
   QiankunProps,
   qiankunWindow,
   renderWithQiankun,
 } from "vite-plugin-qiankun/dist/helper";
+
+import { StrictMode } from "react";
+import { createRoot, Root } from "react-dom/client";
 
 import { AppRoot } from "./AppRoot";
 import "./main.css";

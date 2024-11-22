@@ -223,12 +223,12 @@ const TestH5: FC<TestH5Props> = () => {
           overflow: "hidden",
         }}
       >
-        <Konva
+        {/* <Konva
           width={konva.width}
           height={konva.height}
           dragSourceSrc={konva.dragSourceSrc}
           displayStars
-        />
+        /> */}
       </div>
     </div>
   );

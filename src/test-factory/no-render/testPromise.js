@@ -1,16 +1,27 @@
-const promise = new Promise((resolve, reject) => {
-  resolve("aaaa");
+async function async1() {
+  console.log("async1 start");
+  await async2();
+  console.log("async1 end");
+}
+
+async function async2() {
+  console.log("async2");
+}
+
+//1
+console.log("script start");
+//2
+setTimeout(function () {
+  console.log("setTimeout");
+}, 0);
+//3
+async1();
+//4
+new Promise(function (resolve) {
+  console.log("promise1");
+  resolve();
+}).then(function () {
+  console.log("promise2");
 });
-
-promise.then((res) => console.log("res1:", res));
-promise.then((res) => console.log("res2:", res));
-promise.then((res) => console.log("res3:", res));
-
-// 停顿1s后，会继续输出该内容
-setTimeout(() => {
-  promise.then((res) => console.log("res4:", res));
-}, 1000);
-
-setTimeout(() => {
-  promise.then((res) => console.log("res5:", res));
-}, 2000);
+//5
+console.log("script end");

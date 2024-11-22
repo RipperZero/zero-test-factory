@@ -112,9 +112,13 @@
 //   return result;
 // };
 // console.log(extractAfterFirstSpace("01 　123 456"));
-import { isEmpty, isFunction, isObject } from "radash";
-import { isPromise } from "util/types";
+import { listify } from "radash";
 
-const obj = {};
+const fish = {
+  marlin: true,
+  bass: false,
+  aaaa: true,
+  bbbb: false,
+};
 
-console.log(isPromise(new Promise(() => {})));
+// console.log(listify(fish, (key, value) => key));

@@ -1,59 +1,87 @@
-import { FC, useEffect, useState } from "react";
+import { FC, Suspense, use, useEffect, useState } from "react";
 
-import { Card, Empty, Skeleton, Typography } from "antd";
+import { Button, Card, Empty, Skeleton, Typography } from "antd";
 
-import { guard, sleep, tryit } from "radash";
+import { sleep, tryit } from "radash";
 
+import { GetPatientList } from "@api.mockAPI";
+
+import { getPatientList } from "@/api";
 import { isNullable } from "@/shared/utils/tools";
 
 import { Show } from "./Show";
 
-const queryApi = async (params: boolean) => {
-  console.log("params =>>>", params);
-  await sleep(1000);
+// const getPatientListPromise = getPatientList();
 
-  return Array.from({ length: 10 }, (_, index) => {
-    return {
-      id: index + 1,
-      name: `Item ${index + 1}`,
-    };
+type GetPatientListPromise = ReturnType<typeof getPatientList>;
+
+const PatientList: FC<{
+  getPatientListPromise: GetPatientListPromise;
+}> = ({ getPatientListPromise }) => {
+  const res = use(getPatientListPromise) as GetPatientList;
+
+  return res.map((item) => {
+    return (
+      <Card key={item.wardId} className="w-[50vw] text-center">
+        {item.wardNumber}
+      </Card>
+    );
   });
 };
 
-type ResItem = {
-  id: number;
-  name: string;
-};
+// const queryApi = async (params: boolean) => {
+//   console.log("params =>>>", params);
+//   await sleep(1000);
+
+//   return Array.from({ length: 10 }, (_, index) => {
+//     return {
+//       id: index + 1,
+//       name: `Item ${index + 1}`,
+//     };
+//   });
+// };
+
+// type ResItem = {
+//   id: number;
+//   name: string;
+// };
 
 type ShowPageProps = {};
 
 const ShowPage: FC<ShowPageProps> = () => {
   // #region hooks start
-  const [loading, setLoading] = useState(true);
-  const [res, setRes] = useState<Array<ResItem> | undefined>(undefined);
+  const [getPatientListPromise, setGetPatientListPromise] =
+    useState<GetPatientListPromise>(getPatientList);
+  // const [loading, setLoading] = useState(true);
+  // const [res, setRes] = useState<Array<ResItem> | undefined>(undefined);
+  // const [getPatientListRes, setGetPatientListRes] = useState<
+  //   GetPatientList | undefined
+  // >(undefined);
   // #endregion hooks end
 
   // #region useEffect functions start
-  useEffect(() => {
-    let ignore = false;
+  // useEffect(() => {
+  //   let ignore = false;
 
-    const query = async (params: boolean) => {
-      console.log("params =>>>", params);
+  //   const query = async (params: boolean) => {
+  //     console.log("params =>>>", params);
 
-      setLoading(true);
-      const [_e, res] = await tryit(queryApi)(true);
-      if (!ignore) {
-        setLoading(false);
-        setRes(res);
-      }
-    };
+  //     setLoading(true);
+  //     // const [_e, res] = await tryit(queryApi)(true);
+  //     const [_e, res] = await tryit(getPatientList)();
+  //     if (!ignore) {
+  //       setLoading(false);
+  //       // setRes(res);
+  //       setGetPatientListRes(res as unknown as GetPatientList);
+  //     }
+  //   };
 
-    query(true);
+  //   query(true);
 
-    return () => {
-      ignore = true;
-    };
-  }, []);
+  //   return () => {
+  //     ignore = true;
+  //   };
+  // }, []);
   // #endregion useEffect functions end
 
   // #region logic functions start
@@ -64,7 +92,7 @@ const ShowPage: FC<ShowPageProps> = () => {
     <div className="flex flex-col gap-[8px]">
       <Typography.Title className="text-center">ShowPage</Typography.Title>
 
-      <div className="flex min-h-[50vh] flex-col gap-[8px] p-4">
+      {/* <div className="flex min-h-[50vh] flex-col gap-[8px] p-4">
         <Show
           trigger={!loading}
           fallback={Array.from({ length: 6 }, (_, index) => {
@@ -79,22 +107,48 @@ const ShowPage: FC<ShowPageProps> = () => {
           })}
         >
           <Show
-            trigger={res}
-            hideWhenNullish={loading && isNullable(res)}
+            trigger={getPatientListRes}
+            hideWhenNullish={loading && isNullable(getPatientListRes)}
             banEmptyTrigger
             fallback={<Empty />}
           >
             {(res) => {
               return res.map((item) => {
                 return (
-                  <Card key={item.id} className="w-[50vw] text-center">
-                    {item.name}
+                  <Card key={item.wardId} className="w-[50vw] text-center">
+                    {item.wardNumber}
                   </Card>
                 );
               });
             }}
           </Show>
         </Show>
+      </div> */}
+      <Button
+        className="w-[200px]"
+        type="primary"
+        onClick={() => {
+          setGetPatientListPromise(getPatientList());
+        }}
+      >
+        ReQuery
+      </Button>
+
+      <div className="flex min-h-[50vh] flex-col gap-[8px] p-4">
+        <Suspense
+          fallback={Array.from({ length: 6 }, (_, index) => {
+            return (
+              <Skeleton.Node
+                key={index}
+                className="!w-[50vw]"
+                active
+                fullSize
+              />
+            );
+          })}
+        >
+          <PatientList getPatientListPromise={getPatientListPromise} />
+        </Suspense>
       </div>
     </div>
   );
