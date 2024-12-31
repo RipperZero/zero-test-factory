@@ -1,7 +1,8 @@
 import { FC } from "react";
-import { RouterProvider } from "react-router-dom";
+import { RouterProvider } from "react-router/dom";
 
 import { App, ConfigProvider } from "antd";
+
 // import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 // @ts-ignore:next-line
 import { ClickToComponent } from "click-to-react-component";

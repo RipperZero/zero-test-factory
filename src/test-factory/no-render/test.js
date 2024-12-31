@@ -1,66 +1,29 @@
-class Depend {
-  constructor() {
-    this.reactiveFns = [];
-  }
-
-  addDepend(reactiveFn) {
-    this.reactiveFns.push(reactiveFn);
-  }
-
-  notify() {
-    this.reactiveFns.forEach((fn) => fn());
-  }
-}
-
-const targetMap = new WeakMap();
-
-const getDepend = (target, key) => {
-  let map = targetMap.get(target);
-
-  if (!map) {
-    map = new Map();
-    targetMap(target, map);
-  }
-
-  let depend = map.get(key);
-  if (!depend) {
-    depend = new Depend();
-    map.set(key, depend);
-  }
-
-  return depend;
-};
-
-// const depend = new Depend();
-
-// const watchFn = (fn) => {
-//   depend.addDepend(fn);
+// const userId = "WS106";
+// const password = "123456";
+// const stringToBase64 = (str) => {
+//   const Buffer = require("buffer").Buffer;
+//   const buffer = Buffer.from(str, "utf8");
+//   return buffer.toString("base64");
 // };
+// const idPassEncoded = stringToBase64(`${userId}:${password}`);
+// const Authorization = `Basic ${idPassEncoded}`;
+// console.log(Authorization);
+import dayjs from "dayjs";
 
-const obj = {
-  name: "coderwhy",
-  age: 18,
-};
+// const unlockTime = 1734509916173;
 
-const objProxy = new Proxy(obj, {
-  get: (target, key, receiver) => {
-    return Reflect.get(target, key, receiver);
-  },
-  set: (target, key, newValue, receiver) => {
-    Reflect.set(target, key, newValue, receiver);
-    const depend = getDepend(target, key);
-    depend.notify();
-  },
-});
+// console.log(dayjs(unlockTime).format("HH:mm"));
 
-const foo = () => {
-  const newName = obj.name;
-  console.log("响应式数据：", newName);
-};
+// YYYYMMDDHHmmss
+const expiration = "20241221113210";
 
-// watchFn(foo);
+const expirationTimestamp = parseInt(expiration, 10);
 
-objProxy.name = "123";
-objProxy.name = "456";
-objProxy.name = "789";
-objProxy.age = 666;
+const expirationDayjs = dayjs(expiration, "YYYYMMDDHHmmss");
+
+console.log(expirationDayjs.format("YYYYMMDDHHmmss"));
+const now = dayjs();
+
+const isExpired = expirationDayjs.isBefore(now);
+
+console.log(isExpired);

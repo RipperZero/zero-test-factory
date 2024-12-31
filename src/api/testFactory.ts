@@ -1,6 +1,8 @@
 import { FindAllUserResObj, RegisterUserReqParams } from "@api.testFactory";
 
-import { axiosInstance } from "@/shared/utils/axiosInstance";
+import { createAxiosInstance } from "@/shared/utils/createAxiosInstance";
+
+const axiosInstance = createAxiosInstance();
 
 const findAllUser = () => {
   return axiosInstance.get<FindAllUserResObj>("/findAllUser");

@@ -1,7 +1,8 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router";
 
 import { getBaseURL } from "@/shared/utils/envUtils";
 import { Antd } from "@/test-factory/antd";
+import { AxiosPage } from "@/test-factory/axios/AxiosPage";
 import { ReactSpring } from "@/test-factory/react-spring";
 import { Segment } from "@/test-factory/segment";
 import { ShowPage } from "@/test-factory/show";
@@ -23,6 +24,11 @@ const router = createBrowserRouter(
     { path: APP_PATHS.REACTSPRING, element: <ReactSpring /> },
     { path: APP_PATHS.SHOW, element: <ShowPage /> },
     { path: APP_PATHS.UPLOAD, element: <UploadPage /> },
+
+    {
+      path: "/axios",
+      element: <AxiosPage />,
+    },
   ],
   {
     basename: getBaseURL(),

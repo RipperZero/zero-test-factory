@@ -2,7 +2,9 @@ import { ChangeEvent, FC, useRef, useState } from "react";
 
 import { Button, Progress, Typography } from "antd";
 
-import { axiosInstance } from "@/shared/utils/axiosInstance";
+import { createAxiosInstance } from "@/shared/utils/createAxiosInstance";
+
+const axiosInstance = createAxiosInstance();
 
 type UploadPageProps = {};
 

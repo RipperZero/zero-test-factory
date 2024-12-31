@@ -18,7 +18,8 @@ type GetPatientListPromise = ReturnType<typeof getPatientList>;
 const PatientList: FC<{
   getPatientListPromise: GetPatientListPromise;
 }> = ({ getPatientListPromise }) => {
-  const res = use(getPatientListPromise) as GetPatientList;
+  // const res = use(getPatientListPromise) as GetPatientList;
+  const res = use(getPatientListPromise) as unknown as GetPatientList;
 
   return res.map((item) => {
     return (

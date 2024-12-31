@@ -1,9 +1,15 @@
 import { GetPatientList } from "@api.mockAPI";
 
-import { axiosInstance } from "@/shared/utils/axiosInstance";
+import { createAxiosInstance } from "@/shared/utils/createAxiosInstance";
 
-axiosInstance.defaults.baseURL =
-  "https://6643258f3c01a059ea21adf8.mockapi.io/api";
+// import { axiosInstance } from "@/shared/utils/axiosInstance";
+
+const mockApiAxiosInstance = createAxiosInstance({
+  baseURL: "https://6643258f3c01a059ea21adf8.mockapi.io/api",
+});
+
+// axiosInstance.defaults.baseURL =
+//   "https://6643258f3c01a059ea21adf8.mockapi.io/api";
 
 // const getUsersManager = () => {
 //   const abortControllerMap = new Map<number, AbortController>();
@@ -13,7 +19,7 @@ axiosInstance.defaults.baseURL =
 //     const abortController = new AbortController();
 //     abortControllerMap.set(timeStamp, abortController);
 
-//     return axiosInstance
+//     return mockApiAxiosInstance
 //       .get<GetUsersResObj, GetUsersResObj>("/users", undefined, {
 //         signal: abortController.signal,
 //       })
@@ -39,7 +45,7 @@ axiosInstance.defaults.baseURL =
 // export { getUsers, abortGetUsers };
 
 const getPatientList = () => {
-  return axiosInstance.get<GetPatientList>("/patientList");
+  return mockApiAxiosInstance.get<GetPatientList>("/patientList");
 };
 
 export { getPatientList };

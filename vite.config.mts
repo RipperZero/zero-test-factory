@@ -34,7 +34,7 @@ export default defineConfig(({ mode }) => {
       // provide temp certificate(just in dev) to support for vite https development services
       // if an Axios request error is reported during startup
       // comment out this line and release[basicSsl()]'s comment to provide temp certificate
-      mkcert({ source: "coding" }),
+      // mkcert({ source: "coding" }),
       // @see https://vitejs.dev/config/server-options.html#server-https
       // basicSsl(),
     ],
@@ -57,7 +57,7 @@ export default defineConfig(({ mode }) => {
       rollupOptions: {
         output: {
           manualChunks: {
-            react: ["react", "react-dom", "react-router-dom"],
+            react: ["react", "react-dom", "react-router"],
           },
           chunkFileNames: "assets/js/[name]-[hash].js",
           entryFileNames: "assets/js/[name]-[hash].js",
