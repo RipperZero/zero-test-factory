@@ -2,15 +2,21 @@ import { FC } from "react";
 
 import { Button } from "antd";
 
-import { HttpStatusCode } from "axios";
-
 import { createAxiosInstance } from "@/shared/utils/createAxiosInstance";
+
+/**
+ * 200 <= status && status < 300
+ * @param status
+ */
+const _isValidResponse = (status: number) => {
+  return 200 <= status && status < 300;
+};
 
 const instance = createAxiosInstance({
   baseURL: "http://g08cnxdfxslsyu:8888/web-platform-server",
   // @see https://axios-http.com/docs/req_config
   validateStatus: (status: number) => {
-    return status < HttpStatusCode.InternalServerError;
+    return status < 500;
   },
 });
 
