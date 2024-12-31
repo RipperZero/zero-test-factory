@@ -1,6 +1,6 @@
-const fs = require("fs");
+import { writeFile } from "fs";
 
-fs.writeFile("./src/app/node/fs/log.text", "hello", (err, data) => {
+writeFile("./src/app/node/fs/log.text", "hello", (err, data) => {
   if (!err) {
     console.log("Finish");
   }

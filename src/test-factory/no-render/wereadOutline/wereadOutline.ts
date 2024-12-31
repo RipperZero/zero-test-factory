@@ -79,6 +79,7 @@ const wereadOutline = async () => {
 
     const [writeError] = await writeTxtFile(outline);
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     !!writeError
       ? console.log("写入文本文件失败")
       : console.log("写入文本文件成功");

@@ -4,7 +4,7 @@ import { Space } from "antd";
 
 import classes from "./index.module.scss";
 
-type ChatNotificationProps = {};
+type ChatNotificationProps = unknown;
 
 const ChatNotification: FC<ChatNotificationProps> = () => {
   // #region hooks start
@@ -45,7 +45,7 @@ const ChatNotification: FC<ChatNotificationProps> = () => {
         </div>
       </div>
 
-      <button className=" bg-sky-500 hover:bg-sky-700">Save changes</button>
+      <button className="bg-sky-500 hover:bg-sky-700">Save changes</button>
 
       <div className="container columns-2 gap-8 hover:columns-3">
         {Array.from({ length: 10 }).map((_, index) => {

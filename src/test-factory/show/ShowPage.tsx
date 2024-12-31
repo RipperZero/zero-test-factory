@@ -47,7 +47,7 @@ const PatientList: FC<{
 //   name: string;
 // };
 
-type ShowPageProps = {};
+type ShowPageProps = unknown;
 
 const ShowPage: FC<ShowPageProps> = () => {
   // #region hooks start

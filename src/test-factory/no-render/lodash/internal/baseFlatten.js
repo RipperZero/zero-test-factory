@@ -12,7 +12,9 @@ import { isFlattenable } from "./isFlattenable";
  * @returns {Array} Returns the new flattened array.
  */
 export const baseFlatten = (array, depth, predicate, isStrict, result) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   predicate || (predicate = isFlattenable);
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   result || (result = []);
 
   //   if (array == null) {
@@ -35,6 +37,7 @@ export const baseFlatten = (array, depth, predicate, isStrict, result) => {
 
   for (const value of array) {
     if (depth > 0 && predicate(value)) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       depth > 1
         ? baseFlatten(value, depth - 1, predicate, isStrict, result)
         : result.push(...value);

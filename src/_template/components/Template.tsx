@@ -1,8 +1,8 @@
 import { FC, useEffect, useState } from "react";
 
-type _TemplateProps = {};
+type TemplateProps = unknown;
 
-const _Template: FC<_TemplateProps> = ({}) => {
+const Template: FC<TemplateProps> = () => {
   // #region hooks start
   const [_temp, setTemp] = useState();
   // #endregion hooks end
@@ -25,4 +25,4 @@ const _Template: FC<_TemplateProps> = ({}) => {
   // #endregion render functions end
 };
 
-export { _Template };
+export { Template };

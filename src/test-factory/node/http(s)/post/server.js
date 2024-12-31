@@ -1,4 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-require-imports, no-undef
 const { createServer, request } = require("http");
+// eslint-disable-next-line @typescript-eslint/no-require-imports, no-undef
 const { stringify } = require("querystring");
 
 const postData = {

@@ -27,7 +27,7 @@ const EVENT_TYPE_TO_COLOR: Record<string, CSSProperties["backgroundColor"]> = {
   dblclick: "black",
 };
 
-type TestH5Props = {};
+type TestH5Props = unknown;
 
 const TestH5: FC<TestH5Props> = () => {
   // #region hooks start

@@ -4,7 +4,6 @@ import { RouterProvider } from "react-router/dom";
 import { App, ConfigProvider } from "antd";
 
 // import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-// @ts-ignore:next-line
 import { ClickToComponent } from "click-to-react-component";
 
 import { StyleProvider } from "@ant-design/cssinjs";

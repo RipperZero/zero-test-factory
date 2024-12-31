@@ -3,9 +3,8 @@ import { FC, useState } from "react";
 import { Button, Space, Typography } from "antd";
 
 // import { abortGetUsers, getUsers } from "@/api";
-import { abortGetUsers, getUsers } from "../../api";
 
-type CounterProps = {};
+type CounterProps = unknown;
 
 const Counter: FC<CounterProps> = () => {
   // #region hooks start
@@ -34,23 +33,23 @@ const Counter: FC<CounterProps> = () => {
       </Button>
       <Button
         type="primary"
-        onClick={() => {
-          getUsers()
-            .then((res) => {
-              console.log(res);
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-        }}
+        // onClick={() => {
+        //   getUsers()
+        //     .then((res) => {
+        //       console.log(res);
+        //     })
+        //     .catch((error) => {
+        //       console.log(error);
+        //     });
+        // }}
       >
         Request
       </Button>
       <Button
         type="primary"
-        onClick={() => {
-          abortGetUsers();
-        }}
+        // onClick={() => {
+        //   abortGetUsers();
+        // }}
       >
         Abort
       </Button>

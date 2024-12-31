@@ -18,7 +18,7 @@ const trans = (x: number, y: number, s: number) =>
 
 const AnimatedAntDImage = animated(Image);
 
-type TiltProps = {};
+type TiltProps = unknown;
 
 const Tilt: FC<TiltProps> = () => {
   // #region hooks start
@@ -75,10 +75,10 @@ const Tilt: FC<TiltProps> = () => {
               transition: "all 400ms cubic-bezier(0.03, 0.98, 0.52, 0.99) 0s",
               transform: animatedSprings.xys.to(trans),
             }}
-            onMouseMove={({ clientX, clientY }) => {
-              animatedSpringApi({ xys: calc(clientX, clientY) });
-            }}
-            onMouseLeave={() => animatedSpringApi({ xys: [0, 0, 1] })}
+            // onMouseMove={({ clientX, clientY }) => {
+            //   animatedSpringApi({ xys: calc(clientX, clientY) });
+            // }}
+            // onMouseLeave={() => animatedSpringApi({ xys: [0, 0, 1] })}
           />
         </Col>
         <Col span={8}>

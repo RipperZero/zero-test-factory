@@ -28,7 +28,7 @@ const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
  * chunk(['a', 'b', 'c', 'd'], 3)
  * // => [['a', 'b', 'c'], ['d']]
  */
-const chunk = <T extends unknown>(array: T[], size = 1) => {
+const chunk = <T>(array: T[], size = 1) => {
   const roundedSize = Math.round(size);
 
   if (!Array.isArray(array)) {

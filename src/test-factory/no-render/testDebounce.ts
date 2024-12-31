@@ -1,5 +1,6 @@
 // @see https://juejin.cn/post/7434486317134364735#heading-9
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 const debounce = (fn: Function, delay: number) => {
   let timeoutId: NodeJS.Timeout | undefined = undefined;
 

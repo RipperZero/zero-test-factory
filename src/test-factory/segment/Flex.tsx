@@ -1,9 +1,10 @@
 import { FC } from "react";
 
 import { Divider } from "antd";
+
 import { clsx } from "clsx";
 
-type FlexProps = {};
+type FlexProps = unknown;
 
 const cardCount = 4;
 

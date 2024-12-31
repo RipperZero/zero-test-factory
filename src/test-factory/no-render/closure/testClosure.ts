@@ -1,6 +1,7 @@
 export {};
 
 const closureLoopDanger = () => {
+  // eslint-disable-next-line no-var
   for (var index = 1; index <= 5; index++) {
     // eslint-disable-next-line no-loop-func
     setTimeout(() => {
@@ -10,6 +11,7 @@ const closureLoopDanger = () => {
 };
 
 const closureLoopIIFE = () => {
+  // eslint-disable-next-line no-var
   for (var index = 1; index <= 5; index++) {
     // IIFE @see https://developer.mozilla.org/en-US/docs/Glossary/IIFE
     ((index) => {

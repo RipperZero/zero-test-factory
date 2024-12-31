@@ -1,4 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-require-imports, no-undef
 const { createServer, get } = require("http");
+// eslint-disable-next-line @typescript-eslint/no-require-imports, no-undef
 const { parse } = require("querystring");
 
 const server = createServer((request, response) => {

@@ -1,6 +1,7 @@
 import { FC } from "react";
 
 import { Button, Form, Input, Select } from "antd";
+
 import { cloneDeep, merge } from "lodash";
 
 const { Option } = Select;
@@ -32,7 +33,7 @@ const AntDForm: FC = () => {
   //     }
   //   };
 
-  const onFinish = (values: any) => {
+  const onFinish = (values: unknown) => {
     console.log(values);
   };
 

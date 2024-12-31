@@ -6,7 +6,7 @@ import { createAxiosInstance } from "@/shared/utils/createAxiosInstance";
 
 const axiosInstance = createAxiosInstance();
 
-type UploadPageProps = {};
+type UploadPageProps = unknown;
 
 const UploadPage: FC<UploadPageProps> = () => {
   // #region hooks start

@@ -27,6 +27,7 @@ const selectionSort = (array: number[]) => {
 const swap = (array: number[], srcIndex: number, tarIndex: number) => {
   let tempNum;
 
+  // eslint-disable-next-line prefer-const
   tempNum = array[srcIndex];
   array[srcIndex] = array[tarIndex];
   array[tarIndex] = tempNum;

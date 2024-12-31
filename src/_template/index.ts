@@ -1,1 +1,1 @@
-export { _Template } from "./components/_Template";
+export { Template } from "./components/Template";

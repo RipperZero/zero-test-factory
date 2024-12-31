@@ -83,7 +83,7 @@ const interceptRequest = (instance: RawAxiosInstance) => {
 const interceptResponse = (instance: RawAxiosInstance) => {
   instance.interceptors.response.use(
     // onFulfilled
-    // @ts-ignore:next-line
+    // @ts-expect-error:next-line
     (res) => {
       console.log("=====>>>> onFulfilled");
       console.log(res);

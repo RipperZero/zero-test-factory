@@ -18,7 +18,7 @@ const items: TabsProps["items"] = [
   },
 ];
 
-type ReactQueryProps = {};
+type ReactQueryProps = unknown;
 
 const ReactQuery: FC<ReactQueryProps> = () => {
   // #region hooks start

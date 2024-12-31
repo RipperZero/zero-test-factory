@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-require-imports, no-undef
 const https = require("https");
 
 https.get(

@@ -120,7 +120,6 @@ type DataType = {
   address: string;
 };
 
-// @ts-ignore:next-line
 type ColumnTypes = Exclude<EditableTableProps["columns"], undefined>;
 
 const AntdTable: FC = () => {
@@ -171,10 +170,9 @@ const AntdTable: FC = () => {
         return dataSource.length >= 1 ? (
           <Popconfirm
             title="Sure to delete?"
-            // @ts-ignore:next-line
+            // @ts-expect-error:next-line
             onConfirm={() => handleDelete(record.key)}
           >
-            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a>Delete</a>
           </Popconfirm>
         ) : null;

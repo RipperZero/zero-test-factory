@@ -9,7 +9,7 @@ const array = [4, 3, 3, 5, 9, 1];
 const quickSort = (array: number[], low: number, high: number) => {
   if (low < high) {
     // index为low === high的重合位置
-    let index = partation(array, low, high);
+    const index = partation(array, low, high);
 
     // 以index为分界线进行递归
     quickSort(array, low, index - 1);

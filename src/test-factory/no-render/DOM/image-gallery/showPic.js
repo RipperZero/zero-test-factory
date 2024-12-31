@@ -21,6 +21,7 @@ const addLoadEvent = (func) => {
 const insertAfter = (newElement, targetElement) => {
   const parent = targetElement.parentNode;
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   parent.lastChild === targetElement
     ? parent.appendChild(newElement)
     : parent.insertBefore(newElement, targetElement.nextSibling);

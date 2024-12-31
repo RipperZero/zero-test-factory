@@ -2,7 +2,7 @@ import { FC } from "react";
 
 import { animated, useSpring } from "@react-spring/web";
 
-type BasicSpringProps = {};
+type BasicSpringProps = unknown;
 
 const BasicSpring: FC<BasicSpringProps> = () => {
   // #region hooks start
@@ -33,7 +33,7 @@ const BasicSpring: FC<BasicSpringProps> = () => {
         borderRadius: 8,
         ...springs,
       }}
-      onClick={handleClick}
+      // onClick={handleClick}
     />
   );
   // #endregion render functions end

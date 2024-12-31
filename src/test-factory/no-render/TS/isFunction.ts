@@ -2,6 +2,7 @@
 //   readonly name: string;
 // };
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 export const isFunction = (v: any): v is Function => typeof v == "function";
 
 console.log(isFunction(undefined));

@@ -234,7 +234,7 @@ const Konva: FC<KonvaProps> = ({
                 isDragging: false,
               };
 
-              // @ts-ignore:next-line
+              // @ts-expect-error:next-line
               draft.push(imageInfo);
             }),
           );

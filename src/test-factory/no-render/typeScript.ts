@@ -233,7 +233,7 @@ const a = {
   info: "123",
   warning: "456",
   error: "789",
-  // @ts-ignore:next-line
+  // @ts-expect-error:next-line
 }[severity];
 
 console.log(a);

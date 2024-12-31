@@ -8,7 +8,7 @@ import {
   useMutation, // useQueryClient
 } from "@tanstack/react-query";
 
-type TestMutationProps = {};
+type TestMutationProps = unknown;
 
 const TestMutation: FC<TestMutationProps> = () => {
   // #region hooks start

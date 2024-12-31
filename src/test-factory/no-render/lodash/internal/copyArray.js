@@ -10,6 +10,7 @@ export const copyArray = (source, array) => {
   let index = -1;
   const length = source.length;
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   array || (array = new Array(length));
 
   while (++index < length) {

@@ -1,10 +1,8 @@
 import { FC, useRef, useState } from "react";
 
-import { Input as AntdInput } from "antd";
+type InputProps = unknown;
 
-type InputProps = {};
-
-const Input: FC<InputProps> = ({}) => {
+const Input: FC<InputProps> = () => {
   // #region hooks start
   const inputRef = useRef<HTMLInputElement | null>(null);
   inputRef.current?.setSelectionRange(3, 3);
