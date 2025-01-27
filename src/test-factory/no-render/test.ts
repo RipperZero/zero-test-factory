@@ -7,4 +7,4 @@ const fish = {
   bbbb: false,
 };
 
-// console.log(listify(fish, (key, value) => key));
+console.log(listify(fish, (key, value) => key));
