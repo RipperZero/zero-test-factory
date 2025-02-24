@@ -10,6 +10,8 @@ import tsconfigPaths from "vite-tsconfig-paths";
 // import { resolve } from "node:path";
 import picocolors from "picocolors";
 
+import tailwindcss from "@tailwindcss/vite";
+
 const ENV_PREFIX = "ENV_";
 
 // const httpsOptions: ServerOptions = {
@@ -26,6 +28,7 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [
       react(),
+      tailwindcss(),
       tsconfigPaths(),
       svgr({
         include: "**/*.svg",
