@@ -10,7 +10,7 @@ const Template: FC<TemplateProps> = () => {
   // #region useEffect functions start
   useEffect(() => {
     console.log(_temp);
-  }, []);
+  }, [_temp]);
   // #endregion useEffect functions end
 
   // #region logic functions start

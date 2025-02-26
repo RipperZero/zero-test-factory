@@ -2,72 +2,93 @@
 
 @import "tailwindcss";
 
-/* :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@theme {
+  /* #region border ---start */
+  --border-radius-RADIUS_10: 10px;
+  --border-radius-RADIUS_4: 4px;
+  /* #endregion border ---end */
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* #region colors ---start */
+  --color-BLUE_1: #4874ce;
+  --color-BLUE_L1: #c9dbff;
+  --color-BLUE_L2: #dde8ff;
+  --color-BLUE_L3: #f1f6ff;
+  --color-GRAY_1: #e6e6e6;
+  --color-GRAY_2: #f4f4f4;
+  --color-GRAY_3: #f8f8f8;
+  --color-YELLOW_1: #fffecc;
+  --color-YELLOW_2: #ffef7a;
+  --color-WHITE: #ffffff;
+  --color-LINE_GRAY_1: #cccccc;
+  --color-LINE_GRAY_2: #dddddd;
+  --color-LINE_GRAY_3: #eeeeee;
+  --color-LINE_BLUE_1: #a2c1ff;
+  --color-LINE_BLUE_2: #a4bae6;
+  --color-LINE_BLUE_3: #cfdcf5;
+  --color-TEXT_BLACK: #000000;
+  --color-TEXT_BLACK_60: rgba(0, 0, 0, 0.6);
+  --color-TEXT_BLACK_30: rgba(0, 0, 0, 0.3);
+  --color-TEXT_BLUE_1: #2a4c91;
+  --color-TEXT_BLUE_2: #4874ce;
+  --color-TEXT_BLUE_L1: #b6cefb;
+  --color-ERROR_RED: #ce0101;
+  --color-REQUIRED_RED: #c90c1f;
+  --color-TEXT_WHITE: #ffffff;
+  --color-ICON_BLUE: #608add;
+  --color-ORANGE: #ce6e00;
+  --color-ERROR_BG_RED: #fadfe5;
+  /* #endregion colors ---end */
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
+  /* #region font ---start */
+  --font-BASE_FONT: "Meiryo UI", sans-serif;
+  /* #endregion font ---end */
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+  /* #region drop shadow ---start */
+  --drop-shadow-DROPSHADOW_1: 0px 2px 6px rgba(0, 0, 0, 0.3);
+  /* #endregion drop shadow ---end */
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  /* #region screens ---start */
+  --screen-h5-xs: 320px;
+  --screen-h5-sm: 360px;
+  --screen-h5-md: 414px;
+  --screen-h5-lg: 480px;
+  /* #endregion screens ---end */
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@utility raw-transition-none {
+  transition: none;
+}
+
+/* remove input background color for chrome autocomplete */
+/* @see https://stackoverflow.com/questions/2781549/removing-input-background-colour-for-chrome-autocomplete */
+/*
+  Note:
+  - The class naming concatenation rule is: Element Selector + Class Name + Pseudo-class/element.
+*/
+input.hide-input-autocomplete-background:-webkit-autofill {
+  -webkit-background-clip: text;
+  &:hover {
+    -webkit-background-clip: text;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+}
+/*
+  Note:
+  - When using @utility, element selectors within the @utility block are not effective.
+*/
+/* @utility hide-input-autocomplete-background {
+  input.hide-input-autocomplete-background:-webkit-autofill {
+    -webkit-background-clip: text;
+    &:hover {
+      -webkit-background-clip: text;
+    }
   }
 } */
+
+/* hide native password reveal and clear icons in Edge/IE */
+/* @see https://blog.csdn.net/qq_41872385/article/details/130850917 */
+input[type="password"].hide-input-password-icon::-ms-clear {
+  display: none;
+}
+input[type="password"].hide-input-password-icon::-ms-reveal {
+  display: none;
+}

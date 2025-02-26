@@ -1,5 +1,6 @@
-import { ChatNotification } from "./ChatNotification";
+// import { ChatNotification } from "./ChatNotification";
+import { Test } from "./Test";
 
-const Tailwind = ChatNotification;
+const Tailwind = Test;
 
 export { Tailwind };

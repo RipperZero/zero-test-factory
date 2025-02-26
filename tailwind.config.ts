@@ -106,7 +106,7 @@ const customClassName: PluginFn = ({ addUtilities }) => {
 const config = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   // important: true,
-  // important: "#rx-touch-mobile-root",
+  // important: "#zero-test-factory-root",
   theme: {
     extend: {
       borderRadius: {
