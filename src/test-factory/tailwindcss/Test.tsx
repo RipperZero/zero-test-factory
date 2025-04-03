@@ -1,5 +1,7 @@
 import { FC } from "react";
 
+import { Button } from "antd";
+
 type TestProps = unknown;
 
 const Test: FC<TestProps> = () => {
@@ -35,6 +37,8 @@ const Test: FC<TestProps> = () => {
 
         <button type="submit">submit</button>
       </form>
+
+      <Button className="w-[200px] rounded-[16px]">Test</Button>
     </div>
   );
   // #endregion render functions end

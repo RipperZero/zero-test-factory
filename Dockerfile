@@ -1,4 +1,4 @@
-FROM node:20.14-alpine AS node-base
+FROM node:22.14.0-alpine AS node-base
 
 # deps stage → Install dependencies
 FROM node-base AS deps-stage
@@ -8,10 +8,10 @@ WORKDIR /app
 # set registry && proxy
 # RUN npm config set registry http://10.167.84.199:4873/
 # RUN yarn config set registry http://10.167.84.199:4873/
-RUN npm config set registry https://registry.npmmirror.com/
-RUN npm config set proxy http://10.167.23.54:8080/
-RUN yarn config set registry https://registry.npmmirror.com/
-RUN yarn config set proxy http://10.167.23.54:8080/
+# RUN npm config set registry https://registry.npmmirror.com/
+# RUN npm config set proxy http://10.167.23.54:8080/
+# RUN yarn config set registry https://registry.npmmirror.com/
+# RUN yarn config set proxy http://10.167.23.54:8080/
 
 # Install dependencies based on the preferred package manager
 COPY ["package.json","yarn.lock*","package-lock.json*","pnpm-lock.yaml*","./"]
