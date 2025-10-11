@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { Button } from "antd";
+import { Button, Typography } from "antd";
 
 type TestProps = unknown;
 
@@ -39,6 +39,18 @@ const Test: FC<TestProps> = () => {
       </form>
 
       <Button className="w-[200px] rounded-[16px]">Test</Button>
+
+      <div className="scrollbar max-h-[200px] overflow-y-auto bg-red-500 text-center">
+        <Typography.Title>Scroll</Typography.Title>
+
+        {Array.from({ length: 10 }).map((_, index) => {
+          return (
+            <div key={index} className="m-6 h-[50px] bg-blue-500">
+              {index}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
   // #endregion render functions end

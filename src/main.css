@@ -1,65 +1,202 @@
+/* #region import tailwindcss ==========>>>>>>>>>> ---start */
 /* @import "tailwindcss"; */
 
 /* @see https://ant.design/docs/react/compatible-style-cn#tailwindcss-%E6%8E%92%E5%B8%83-layer */
 @layer theme, base, antd, components, utilities;
 
 @import "tailwindcss";
+/* #endregion import tailwindcss ==========>>>>>>>>>> ---end */
 
+@supports (height: 1dvh) {
+  :root {
+    --dynamic-viewport-height: 1dvh;
+  }
+}
+@supports not (height: 1dvh) {
+  :root {
+    /* polyfill from large-small-dynamic-viewport-units-polyfill(import from main.tsx) */
+    /* @see https://github.com/joppuyo/large-small-dynamic-viewport-units-polyfill */
+    --dynamic-viewport-height: var(--1dvh, 1vh);
+    /* --dynamic-viewport-height: calc(var(--1dvh, 1vh) * 100); */
+  }
+}
+
+/* follow the official naming convention.
+/* @see https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties
+/* NOTE
+/* 1. do not use [_] for variable concatenation
+/* it will not be recognized correctly after [tailwindcss → 4.0.9]
+/* 2. try not use uppercase letters as they might not be recognized.
+/* EG:
+/* [--abcd-efg-hlj-123] */
 @theme {
   /* #region border ---start */
-  --border-radius-RADIUS_10: 10px;
-  --border-radius-RADIUS_4: 4px;
+  /* RADIUS_10 */
+  --radius-radius-10: 10px;
+  /* RADIUS_4 */
+  --radius-radius-4: 4px;
   /* #endregion border ---end */
 
   /* #region colors ---start */
-  --color-BLUE_1: #4874ce;
-  --color-BLUE_L1: #c9dbff;
-  --color-BLUE_L2: #dde8ff;
-  --color-BLUE_L3: #f1f6ff;
-  --color-GRAY_1: #e6e6e6;
-  --color-GRAY_2: #f4f4f4;
-  --color-GRAY_3: #f8f8f8;
-  --color-YELLOW_1: #fffecc;
-  --color-YELLOW_2: #ffef7a;
-  --color-WHITE: #ffffff;
-  --color-LINE_GRAY_1: #cccccc;
-  --color-LINE_GRAY_2: #dddddd;
-  --color-LINE_GRAY_3: #eeeeee;
-  --color-LINE_BLUE_1: #a2c1ff;
-  --color-LINE_BLUE_2: #a4bae6;
-  --color-LINE_BLUE_3: #cfdcf5;
-  --color-TEXT_BLACK: #000000;
-  --color-TEXT_BLACK_60: rgba(0, 0, 0, 0.6);
-  --color-TEXT_BLACK_30: rgba(0, 0, 0, 0.3);
-  --color-TEXT_BLUE_1: #2a4c91;
-  --color-TEXT_BLUE_2: #4874ce;
-  --color-TEXT_BLUE_L1: #b6cefb;
-  --color-ERROR_RED: #ce0101;
-  --color-REQUIRED_RED: #c90c1f;
-  --color-TEXT_WHITE: #ffffff;
-  --color-ICON_BLUE: #608add;
-  --color-ORANGE: #ce6e00;
-  --color-ERROR_BG_RED: #fadfe5;
+  /* BLUE_1 */
+  --color-blue-1: #4874ce;
+  /* BLUE_L1 */
+  --color-blue-l1: #c9dbff;
+  /* BLUE_L2 */
+  --color-blue-l2: #dde8ff;
+  /* BLUE_L3 */
+  --color-blue-l3: #f1f6ff;
+  /* GRAY_1 */
+  --color-gray-1: #e6e6e6;
+  /* GRAY_2 */
+  --color-gray-2: #f4f4f4;
+  /* GRAY_3 */
+  --color-gray-3: #f8f8f8;
+  /* GRAY_4 */
+  --color-gray-4: #8c8c8c;
+  /* BlueGray-1 */
+  --color-blue-gray-1: #e9ecf2d9; /* e9ecf2 85% */
+  /* YELLOW_1 */
+  --color-yellow-1: #fffecc;
+  /* YELLOW_2 */
+  --color-yellow-2: #ffef7a;
+  /* WHITE */
+  --color-white: #ffffff;
+  /* LINE_GRAY_1 */
+  --color-line-gray-1: #cccccc;
+  /* LINE_GRAY_2 */
+  --color-line-gray-2: #dddddd;
+  /* LINE_GRAY_3 */
+  --color-line-gray-3: #eeeeee;
+  /* LINE_GRAY_4 */
+  --color-line-gray-4: #8c8c8c;
+  /* LINE_BLUE_1 */
+  --color-line-blue-1: #a2c1ff;
+  /* LINE_BLUE_2 */
+  --color-line-blue-2: #a4bae6;
+  /* LINE_BLUE_3 */
+  --color-line-blue-3: #cfdcf5;
+  /* TEXT_BLACK */
+  --color-text-black: #000000;
+  /* TEXT_BLACK_60 */
+  --color-text-black-60: --alpha(var(--color-text-black) / 60%);
+  /* TEXT_BLACK_30 */
+  --color-text-black-30: --alpha(var(--color-text-black) / 30%);
+  /* TEXT_BLUE_1 */
+  --color-text-blue-1: #2a4c91;
+  /* TEXT_BLUE_2 */
+  --color-text-blue-2: #4874ce;
+  /* TEXT_BLUE_L1 */
+  --color-text-blue-l1: #b6cefb;
+  /* Text-Red */
+  --color-text-red: #c90c1f;
+  /* ERROR_RED */
+  --color-error-red: #ce0101;
+  /* REQUIRED_RED */
+  --color-required-red: #c90c1f;
+  /* TEXT_WHITE */
+  --color-text-white: #ffffff;
+  /* Icon-Blue */
+  --color-icon-blue: #608add;
+  /* Icon-Red */
+  --color-icon-red: #dc4453;
+  /* ORANGE */
+  --color-orange: #ce6e00;
+  /* ERROR_BG_RED */
+  --color-error-bg-red: #fadfe5;
+
+  /* TODO confirm this ⬇ */
+  /* do not delete [--color-i-do-not-know-why]
+  /* a dummy variable must be written on the last line
+  /* otherwise the previous color configuration will not be recognized */
+  /* --color-i-do-not-know-why: ""; */
   /* #endregion colors ---end */
 
   /* #region font ---start */
-  --font-BASE_FONT: "Meiryo UI", sans-serif;
+  /* BASE_FONT_FAMILY */
+  --font-base-font-family: "Meiryo UI", sans-serif;
+  /* BASE_FONT_SIZE */
+  --text-base-font-size: 14px;
+  /* LINE_SPACING */
+  --spacing-line-spacing: 1.5em;
   /* #endregion font ---end */
 
   /* #region drop shadow ---start */
-  --drop-shadow-DROPSHADOW_1: 0px 2px 6px rgba(0, 0, 0, 0.3);
+  /* DROPSHADOW_1 */
+  --drop-shadow-dropshadow-1: 0px 2px 6px rgb(0, 0, 0, 0.3);
   /* #endregion drop shadow ---end */
 
   /* #region screens ---start */
-  --screen-h5-xs: 320px;
-  --screen-h5-sm: 360px;
-  --screen-h5-md: 414px;
-  --screen-h5-lg: 480px;
+  --breakpoint-h5-xs: 320px;
+  --breakpoint-h5-sm: 360px;
+  --breakpoint-h5-md: 414px;
+  --breakpoint-h5-lg: 480px;
   /* #endregion screens ---end */
 }
 
 @utility raw-transition-none {
   transition: none;
+}
+
+/* @see https://tailwindcss.com/docs/adding-custom-styles#arbitrary-values */
+@utility safe-dvh-* {
+  height: calc(
+    --value([integer]) *
+      /* defaults to 1vh if --dynamic-viewport-height is not set */
+      var(--dynamic-viewport-height, 1vh)
+  );
+}
+@utility safe-min-dvh-* {
+  min-height: calc(
+    --value([integer]) *
+      /* defaults to 1vh if --dynamic-viewport-height is not set */
+      var(--dynamic-viewport-height, 1vh)
+  );
+}
+@utility safe-max-dvh-* {
+  max-height: calc(
+    --value([integer]) *
+      /* defaults to 1vh if --dynamic-viewport-height is not set */
+      var(--dynamic-viewport-height, 1vh)
+  );
+}
+
+@utility scrollbar {
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: var(--color-line-gray-1);
+  }
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background-color: transparent;
+  }
+}
+
+@layer components {
+  /* FONT.BASE */
+  .font-base {
+    font-size: var(--text-base-font-size);
+    line-height: var(--spacing-line-spacing);
+    font-family: var(--font-base-font-family);
+  }
+  /* FONT.TITLE */
+  .font-title {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: var(--spacing-line-spacing);
+    font-family: var(--font-base-font-family);
+  }
+  /* FONT.DIALOG_TITLE */
+  .font-dialog-title {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: var(--spacing-line-spacing);
+    font-family: var(--font-base-font-family);
+  }
 }
 
 /* remove input background color for chrome autocomplete */
@@ -75,17 +212,17 @@ input.hide-input-autocomplete-background:-webkit-autofill {
   }
 }
 /*
-  Note:
-  - When using @utility, element selectors within the @utility block are not effective.
-*/
+    Note:
+    - When using @utility, element selectors within the @utility block are not effective.
+  */
 /* @utility hide-input-autocomplete-background {
-  input.hide-input-autocomplete-background:-webkit-autofill {
-    -webkit-background-clip: text;
-    &:hover {
+    input.hide-input-autocomplete-background:-webkit-autofill {
       -webkit-background-clip: text;
+      &:hover {
+        -webkit-background-clip: text;
+      }
     }
-  }
-} */
+  } */
 
 /* hide native password reveal and clear icons in Edge/IE */
 /* @see https://blog.csdn.net/qq_41872385/article/details/130850917 */

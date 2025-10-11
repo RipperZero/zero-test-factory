@@ -1,13 +1,13 @@
 import react from "@vitejs/plugin-react";
 import { defineConfig, loadEnv } from "vite";
-// import mkcert from "vite-plugin-mkcert";
+import mkcert from "vite-plugin-mkcert";
 import progress from "vite-plugin-progress";
 import svgr from "vite-plugin-svgr";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 // import { readFileSync } from "node:fs";
 // import { ServerOptions } from "node:https";
-// import { resolve } from "node:path";
+import { resolve } from "node:path";
 import picocolors from "picocolors";
 
 import tailwindcss from "@tailwindcss/vite";
@@ -41,7 +41,7 @@ export default defineConfig(({ mode }) => {
       // provide temp certificate(just in dev) to support for vite https development services
       // if an Axios request error is reported during startup
       // comment out this line and release[basicSsl()]'s comment to provide temp certificate
-      // mkcert({ source: "coding" }),
+      mkcert({ source: "coding" }),
       // @see https://vitejs.dev/config/server-options.html#server-https
       // basicSsl(),
     ],
@@ -51,16 +51,20 @@ export default defineConfig(({ mode }) => {
       port: 1234,
       host: true,
       cors: true,
+      allowedHosts: true,
       // https: httpsOptions,
     },
     resolve: {
       alias: {
         lodash: "lodash-es",
-        // "@": resolve(__dirname, "./src"),
+        // file path mapping has been configured in [tsconfig.app.json]'s paths.
+        // this is to support using [@] imports in CSS files.
+        "@": resolve(__dirname, "src"),
       },
     },
     build: {
       // outDir: "dist",
+      // sourcemap: true,
       rollupOptions: {
         output: {
           manualChunks: {
