@@ -26,7 +26,7 @@ const Counter: FC<CounterProps> = () => {
 
   // #region render functions start
   return (
-    <Space direction="vertical" size="large">
+    <Space orientation="vertical" size="large">
       <Typography.Text>{count}</Typography.Text>
       <Button type="primary" onClick={handleAdd}>
         Add

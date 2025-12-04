@@ -84,7 +84,7 @@ const Counter: FC = () => {
 
   // #region render functions start
   return (
-    <Space direction="vertical">
+    <Space orientation="vertical">
       <CountText />
       <Button type="primary" onClick={handleClick}>
         Add

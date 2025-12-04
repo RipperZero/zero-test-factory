@@ -8,6 +8,8 @@ import tseslint from "typescript-eslint";
 import js from "@eslint/js";
 
 export default defineConfig(
+  reactRefresh.configs.vite,
+  reactHooks.configs.flat.recommended,
   configPrettier,
   { ignores: ["dist", "node_modules", "vite.config.mts"] },
   {
@@ -17,16 +19,11 @@ export default defineConfig(
       ecmaVersion: 2020,
       globals: globals.browser,
     },
-    plugins: {
-      "react-hooks": reactHooks,
-      "react-refresh": reactRefresh,
-    },
     rules: {
-      ...reactHooks.configs.recommended.rules,
-      "react-refresh/only-export-components": [
-        "warn",
-        { allowConstantExport: true },
-      ],
+      // "react-refresh/only-export-components": [
+      //   "warn",
+      //   { allowConstantExport: true },
+      // ],
       "@typescript-eslint/no-unused-vars": [
         "warn",
         {

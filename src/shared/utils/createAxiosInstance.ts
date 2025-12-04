@@ -14,7 +14,7 @@ type Result<T> = {
   axios: {
     status: number;
   };
-
+} & {
   success: boolean;
   code: number | null;
   message: string | null;
@@ -85,9 +85,6 @@ const interceptResponse = (instance: RawAxiosInstance) => {
     // onFulfilled
     // @ts-expect-error:next-line
     (res) => {
-      console.log("=====>>>> onFulfilled");
-      console.log(res);
-
       const result: Result<unknown> = {
         axios: {
           status: res.status,
@@ -96,13 +93,10 @@ const interceptResponse = (instance: RawAxiosInstance) => {
         ...res.data,
       };
 
-      // return res.data;
       return result;
     },
     // onRejected
     (error: unknown) => {
-      console.log("=====>>>> onRejected");
-
       // log error
       if (isCancel(error)) {
         console.log("request cancel", error);
@@ -164,7 +158,18 @@ const setRequestProxy = (instance: RawAxiosInstance) => {
   };
 };
 
-const createAxiosInstance = (config?: CreateAxiosDefaults) => {
+type CreateAxiosOptions = Partial<{
+  skipDefaultResponseInterceptor: boolean;
+}>;
+
+type CreateAxiosInstanceParams = Partial<{
+  config: CreateAxiosDefaults;
+  options: CreateAxiosOptions;
+}>;
+
+const createAxiosInstance = (params?: CreateAxiosInstanceParams) => {
+  const { config, options = {} } = params ?? {};
+
   const axiosInstance = axios.create({
     baseURL: getApiServerURL(),
     timeout: getApiTimeOut(),
@@ -172,7 +177,11 @@ const createAxiosInstance = (config?: CreateAxiosDefaults) => {
   });
 
   interceptRequest(axiosInstance);
-  interceptResponse(axiosInstance);
+
+  if (!options.skipDefaultResponseInterceptor) {
+    interceptResponse(axiosInstance);
+  }
+
   setRequestProxy(axiosInstance);
 
   return axiosInstance as AxiosInstance;

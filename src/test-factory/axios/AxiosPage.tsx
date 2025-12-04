@@ -13,10 +13,12 @@ const _isValidResponse = (status: number) => {
 };
 
 const instance = createAxiosInstance({
-  baseURL: "http://g08cnxdfxslsyu:8888/web-platform-server",
-  // @see https://axios-http.com/docs/req_config
-  validateStatus: (status: number) => {
-    return status < 500;
+  config: {
+    baseURL: "http://g08cnxdfxslsyu:8888/web-platform-server",
+    // @see https://axios-http.com/docs/req_config
+    validateStatus: (status: number) => {
+      return status < 500;
+    },
   },
 });
 

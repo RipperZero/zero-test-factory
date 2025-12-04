@@ -18,7 +18,7 @@ const ChatNotification: FC<ChatNotificationProps> = () => {
 
   // #region render functions start
   return (
-    <Space direction="vertical" size={"large"}>
+    <Space orientation="vertical" size={"large"}>
       <div className={classes["chat-notification"]}>
         <div className={classes["chat-notification-logo-wrapper"]}>
           <img

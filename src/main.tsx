@@ -11,8 +11,6 @@ import { createRoot, Root } from "react-dom/client";
 // @see https://github.com/joppuyo/large-small-dynamic-viewport-units-polyfill
 import "large-small-dynamic-viewport-units-polyfill";
 
-import "@ant-design/v5-patch-for-react-19";
-
 import { AppRoot } from "./AppRoot";
 import "./main.css";
 

@@ -138,14 +138,7 @@ const ShowPage: FC<ShowPageProps> = () => {
       <div className="flex min-h-[50vh] flex-col gap-[8px] p-4">
         <Suspense
           fallback={Array.from({ length: 6 }, (_, index) => {
-            return (
-              <Skeleton.Node
-                key={index}
-                className="!w-[50vw]"
-                active
-                fullSize
-              />
-            );
+            return <Skeleton.Node key={index} className="!w-[50vw]" active />;
           })}
         >
           <PatientList getPatientListPromise={getPatientListPromise} />
