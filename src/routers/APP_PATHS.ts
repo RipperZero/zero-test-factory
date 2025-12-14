@@ -12,11 +12,13 @@ const APP_PATHS = {
 
   TAILWIND: `${BASEURL}tailwind`,
 
-  REACTSPRING: `${BASEURL}react-spring`,
+  REACT_SPRING: `${BASEURL}react-spring`,
 
   SHOW: `${BASEURL}show`,
 
   UPLOAD: `${BASEURL}upload`,
+
+  GRAPH_QL: `${BASEURL}graphql`,
 } as const;
 
 export { APP_PATHS };

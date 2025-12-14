@@ -1,0 +1,50 @@
+type Query {
+  #   透析連携設定
+  dialysisCollaborationConfig: DialysisCollaborationConfigRes!
+  #   透析連携 症状編集UserTable設定「自由 主訴 SOAP」
+  dialysisCollaborationEditConfig: DialysisCollaborationEditConfigRes!
+}
+
+interface ResponsePayload {
+  result: Boolean!
+  code: String!
+  message: String!
+}
+
+type DialysisCollaborationConfig {
+  id: ID!
+  isOptionEnabled: Boolean!
+  #   透析連携 文書種別コード
+  dialysisDocTypeCode: Int!
+}
+
+type DialysisCollaborationConfigRes implements ResponsePayload {
+  result: Boolean!
+  code: String!
+  message: String!
+  data: DialysisCollaborationConfig!
+}
+
+#   透析連携 症状編集UserTable設定「自由 主訴 SOAP」
+type DialysisCollaborationEditConfig {
+  id: ID!
+  #   自由
+  isFreeEditable: Boolean!
+  #   主訴
+  isChiefEditable: Boolean!
+  #   S
+  isSubjectiveEditable: Boolean!
+  #   O
+  isObjectiveEditable: Boolean!
+  #   A
+  isAssessmentEditable: Boolean!
+  #   P
+  isPlanEditable: Boolean!
+}
+
+type DialysisCollaborationEditConfigRes implements ResponsePayload {
+  result: Boolean!
+  code: String!
+  message: String!
+  data: DialysisCollaborationEditConfig!
+}
