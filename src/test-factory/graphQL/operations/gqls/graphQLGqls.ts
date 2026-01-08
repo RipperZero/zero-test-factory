@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 const QUERY_DIALYSIS_COLLABORATION_CONFIG = gql`
-  query dialysisCollaborationConfig {
+  query DialysisCollaborationConfig {
     dialysisCollaborationConfig {
       result
       code
@@ -16,7 +16,7 @@ const QUERY_DIALYSIS_COLLABORATION_CONFIG = gql`
 `;
 
 const QUERY_DIALYSIS_COLLABORATION_EDIT_CONFIG = gql`
-  query dialysisCollaborationEditConfig {
+  query DialysisCollaborationEditConfig {
     dialysisCollaborationEditConfig {
       result
       code

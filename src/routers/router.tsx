@@ -5,6 +5,7 @@ import GeneratedDesign from "@/test-factory/ai/Anima/GeneratedDesign";
 import { LogisticsDashboard } from "@/test-factory/ai/BuilderIO/LogisticsDashboard";
 import { Antd } from "@/test-factory/antd";
 import { AxiosPage } from "@/test-factory/axios/AxiosPage";
+import { Context } from "@/test-factory/context/Context";
 import { GraphQL } from "@/test-factory/graphQL/GraphQL";
 import { ReactSpring } from "@/test-factory/react-spring";
 import { Segment } from "@/test-factory/segment";
@@ -17,7 +18,7 @@ import { APP_PATHS } from "./APP_PATHS";
 const router = createBrowserRouter(
   [
     // { path: APP_PATHS.ROOT, element: <div>ROOT</div> },
-    { path: APP_PATHS.ROOT, element: <GraphQL /> },
+    { path: APP_PATHS.ROOT, element: <Context /> },
     { path: APP_PATHS.TEMPLATE, element: <div>template</div> },
     { path: APP_PATHS.ANTD, element: <Antd /> },
     { path: APP_PATHS.SEGMENT, element: <Segment /> },
@@ -41,6 +42,10 @@ const router = createBrowserRouter(
     {
       path: "/anima",
       element: <GeneratedDesign />,
+    },
+    {
+      path: "/context",
+      element: <Context />,
     },
   ],
   {
