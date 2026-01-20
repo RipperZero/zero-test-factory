@@ -9,14 +9,14 @@
       "url": "https://localhost:1234",
       "webRoot": "${workspaceFolder}",
       // "sourceMaps": false,
-      "runtimeExecutable": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+      "runtimeExecutable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
       //   https://developer.chrome.com/blog/remote-debugging-port?hl=zh-cn
       // ⬇ invalid after Chrome 136
       //   "userDataDir": false,
       "runtimeArgs": [
         "--remote-debugging-port=9222",
-        // "--user-data-dir=${workspaceFolder}\\.vscode\\ChromeDev"
-        "--user-data-dir=E:\\ChromeDevUserData",
+        // "--user-data-dir=${workspaceFolder}/.vscode/ChromeDev",
+        "--user-data-dir=E:/ChromeDevUserData",
         "--auto-open-devtools-for-tabs"
         // "--incognito"
       ]
