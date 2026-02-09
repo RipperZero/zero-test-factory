@@ -1,0 +1,170 @@
+import {
+  createContext,
+  FC,
+  lazy,
+  startTransition,
+  Suspense,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
+
+// Demonstrates rules from installed skills:
+// - composition over boolean props (compound components)
+// - state container/provider pattern
+// - deferred updates via startTransition
+// - dynamic import for heavy parts
+
+type Item = { id: number; value: number };
+
+const ListContext = createContext<{
+  count: number;
+  setCount: (v: number | ((n: number) => number)) => void;
+  filter: string;
+  setFilter: (s: string) => void;
+  items: Item[];
+} | null>(null);
+
+function useList() {
+  const ctx = useContext(ListContext);
+  if (!ctx) throw new Error("useList must be used inside provider");
+  return ctx;
+}
+
+const Heavy = lazy(() => import("./Heavy").then((m) => ({ default: m.Heavy })));
+
+type SkillDemoProps = unknown;
+
+const SkillDemo: FC<SkillDemoProps> = () => {
+  // #region hooks start
+  const [count, setCount] = useState(1200);
+  const [filter, setFilter] = useState("");
+  // #endregion hooks end
+
+  // #region useEffect functions start
+  useEffect(() => {
+    // telemetry for demo purposes
+    console.log("SkillDemo mounted/updated, count=", count);
+  }, [count]);
+  // #endregion useEffect functions end
+
+  // #region logic functions start
+  const items = useMemo(() => {
+    const arr: Item[] = [];
+    for (let i = 0; i < count; i++) arr.push({ id: i, value: i });
+    return arr;
+  }, [count]);
+  // #endregion logic functions end
+
+  // #region render functions start
+  return (
+    <ListContext.Provider value={{ count, setCount, filter, setFilter, items }}>
+      <div style={{ padding: 12, border: "1px solid #eee", borderRadius: 6 }}>
+        <h3>Skills-aware Demo (Compound Components + React19)</h3>
+
+        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          <Filter />
+          <Actions />
+          <div style={{ marginLeft: "auto" }}>
+            Total: <strong>{count}</strong>
+          </div>
+        </div>
+
+        <div style={{ marginTop: 10 }}>
+          <ListView />
+        </div>
+
+        <div style={{ marginTop: 12 }}>
+          <Suspense fallback={<div>Loading heavy view...</div>}>
+            <Heavy count={count} />
+          </Suspense>
+        </div>
+      </div>
+    </ListContext.Provider>
+  );
+  // #endregion render functions end
+};
+
+function Filter() {
+  const { filter, setFilter } = useList();
+  return (
+    <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
+      <label style={{ fontSize: 13 }}>Filter</label>
+      <input
+        value={filter}
+        onChange={(e) => setFilter(e.target.value)}
+        placeholder="type digits"
+        style={{ padding: "6px 8px" }}
+      />
+    </div>
+  );
+}
+
+function Actions() {
+  return (
+    <div style={{ display: "flex", gap: 8 }}>
+      <Increase />
+      <Reset />
+    </div>
+  );
+}
+
+function Increase() {
+  const { setCount } = useList();
+  return (
+    <button
+      onClick={() => startTransition(() => setCount((c) => c + 1000))}
+      style={{ padding: "6px 10px" }}
+    >
+      +1000 (deferred)
+    </button>
+  );
+}
+
+function Reset() {
+  const { setCount } = useList();
+  return (
+    <button onClick={() => setCount(1200)} style={{ padding: "6px 10px" }}>
+      Reset
+    </button>
+  );
+}
+
+function ListView() {
+  const { items, filter } = useList();
+  const q = filter.trim();
+  const visible = useMemo(() => {
+    if (!q) return items.slice(0, 40);
+    return items.filter((it) => String(it.value).includes(q)).slice(0, 60);
+  }, [items, q]);
+
+  return (
+    <div
+      style={{
+        maxHeight: 220,
+        overflow: "auto",
+        border: "1px solid #fafafa",
+        padding: 8,
+      }}
+    >
+      {visible.length === 0 ? (
+        <div style={{ color: "#666" }}>No matches</div>
+      ) : (
+        <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
+          {visible.map((it) => (
+            <li
+              key={it.id}
+              style={{ padding: "6px 4px", borderBottom: "1px solid #f7f7f7" }}
+            >
+              #{it.id}: {it.value}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+export type { SkillDemoProps };
+export { SkillDemo };
