@@ -11,12 +11,6 @@ const useHandleClick = <T extends Element>(
 ) => {
   const timeoutIdRef = useRef<NodeJS.Timeout | null>(null);
 
-  useEffect(() => {
-    return () => {
-      clearTimer();
-    };
-  }, []);
-
   const clearTimer = () => {
     if (!!timeoutIdRef.current) {
       clearTimeout(timeoutIdRef.current);
@@ -40,6 +34,12 @@ const useHandleClick = <T extends Element>(
 
     handleDoubleClick(event);
   });
+
+  useEffect(() => {
+    return () => {
+      clearTimer();
+    };
+  }, []);
 
   return { onClick, onDoubleClick };
 };

@@ -5,10 +5,15 @@ type InputProps = unknown;
 const Input: FC<InputProps> = () => {
   // #region hooks start
   const inputRef = useRef<HTMLInputElement | null>(null);
+  // eslint-disable-next-line react-hooks/refs
   inputRef.current?.setSelectionRange(3, 3);
+  // eslint-disable-next-line react-hooks/refs
   const selectionStart = inputRef.current?.selectionStart;
+  // eslint-disable-next-line react-hooks/refs
   const selectionEnd = inputRef.current?.selectionEnd;
+  // eslint-disable-next-line react-hooks/refs
   console.log("selectionStart ===>>>>>", selectionStart);
+  // eslint-disable-next-line react-hooks/refs
   console.log("selectionEnd ===>>>>>", selectionEnd);
 
   const [inputValue, setInputValue] = useState<string | undefined>("123456");

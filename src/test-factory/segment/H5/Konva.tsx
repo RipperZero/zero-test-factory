@@ -91,18 +91,6 @@ const Konva: FC<KonvaProps> = ({
   );
   // #endregion hooks end
 
-  // #region useEffect functions start
-  useEffect(() => {
-    if (displayStars) {
-      setStars(generateShapes(width, height));
-    }
-  }, [displayStars, height, width]);
-
-  useEffect(() => {
-    clearTimer();
-  }, []);
-  // #endregion useEffect functions end
-
   // #region logic functions start
   const clearTimer = () => {
     if (!!timeoutIdRef.current) {
@@ -169,6 +157,19 @@ const Konva: FC<KonvaProps> = ({
     // console.log(e);
   };
   // #endregion logic functions end
+
+  // #region useEffect functions start
+  useEffect(() => {
+    if (displayStars) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setStars(generateShapes(width, height));
+    }
+  }, [displayStars, height, width]);
+
+  useEffect(() => {
+    clearTimer();
+  }, []);
+  // #endregion useEffect functions end
 
   // const { run: handleDblTap } = useDebounceFn(
   //   () => {

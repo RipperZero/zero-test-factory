@@ -1,4 +1,5 @@
 import {
+  ChangeEvent,
   createContext,
   FC,
   lazy,
@@ -86,32 +87,51 @@ const SkillDemo: FC<SkillDemoProps> = () => {
   // #endregion render functions end
 };
 
-function Filter() {
+type FilterProps = unknown;
+
+const Filter: FC<FilterProps> = () => {
+  // #region hooks start
   const { filter, setFilter } = useList();
+  // #endregion hooks end
+
+  // #region render functions start
   return (
     <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
       <label style={{ fontSize: 13 }}>Filter</label>
       <input
         value={filter}
-        onChange={(e) => setFilter(e.target.value)}
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          setFilter(e.target.value)
+        }
         placeholder="type digits"
         style={{ padding: "6px 8px" }}
       />
     </div>
   );
-}
+  // #endregion render functions end
+};
 
-function Actions() {
+type ActionsProps = unknown;
+
+const Actions: FC<ActionsProps> = () => {
+  // #region render functions start
   return (
     <div style={{ display: "flex", gap: 8 }}>
       <Increase />
       <Reset />
     </div>
   );
-}
+  // #endregion render functions end
+};
 
-function Increase() {
+type IncreaseProps = unknown;
+
+const Increase: FC<IncreaseProps> = () => {
+  // #region hooks start
   const { setCount } = useList();
+  // #endregion hooks end
+
+  // #region render functions start
   return (
     <button
       onClick={() => startTransition(() => setCount((c) => c + 1000))}
@@ -120,25 +140,41 @@ function Increase() {
       +1000 (deferred)
     </button>
   );
-}
+  // #endregion render functions end
+};
 
-function Reset() {
+type ResetProps = unknown;
+
+const Reset: FC<ResetProps> = () => {
+  // #region hooks start
   const { setCount } = useList();
+  // #endregion hooks end
+
+  // #region render functions start
   return (
     <button onClick={() => setCount(1200)} style={{ padding: "6px 10px" }}>
       Reset
     </button>
   );
-}
+  // #endregion render functions end
+};
 
-function ListView() {
+type ListViewProps = unknown;
+
+const ListView: FC<ListViewProps> = () => {
+  // #region hooks start
   const { items, filter } = useList();
+  // #endregion hooks end
+
+  // #region logic functions start
   const q = filter.trim();
   const visible = useMemo(() => {
     if (!q) return items.slice(0, 40);
     return items.filter((it) => String(it.value).includes(q)).slice(0, 60);
   }, [items, q]);
+  // #endregion logic functions end
 
+  // #region render functions start
   return (
     <div
       style={{
@@ -164,7 +200,8 @@ function ListView() {
       )}
     </div>
   );
-}
+  // #endregion render functions end
+};
 
 export type { SkillDemoProps };
 export { SkillDemo };

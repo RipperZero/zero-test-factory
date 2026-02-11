@@ -7,6 +7,10 @@ const Heavy: FC<HeavyProps> = ({ count }) => {
   // no local hooks required currently
   // #endregion hooks end
 
+  // #region logic functions start
+  const summary = `rendering summary for ${count} items`;
+  // #endregion logic functions end
+
   // #region useEffect functions start
   useEffect(() => {
     // simulate telemetry for heavy component
@@ -14,10 +18,6 @@ const Heavy: FC<HeavyProps> = ({ count }) => {
     console.log("Heavy rendered for count", count);
   }, [count]);
   // #endregion useEffect functions end
-
-  // #region logic functions start
-  const summary = `rendering summary for ${count} items`;
-  // #endregion logic functions end
 
   // #region render functions start
   return (

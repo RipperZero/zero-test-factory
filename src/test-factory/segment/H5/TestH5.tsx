@@ -47,42 +47,7 @@ const TestH5: FC<TestH5Props> = () => {
   const timeoutIdRef = useRef<NodeJS.Timeout | null>(null);
   // const onClickPreTimeStamp = useRef<number | null>(null);
   const konvaContainerRef = useRef<HTMLDivElement | null>(null);
-
-  const { onClick: onDivClick, onDoubleClick: onDivDoubleClick } =
-    useHandleClick<HTMLDivElement>(
-      (e) => {
-        handleEvent("div", e.type);
-        // e.preventDefault();
-        // e.stopPropagation();
-      },
-      (e) => {
-        handleEvent("div", e.type);
-      },
-    );
   // #endregion hooks end
-
-  // #region useEffect functions start
-  useEffect(() => {
-    return () => {
-      clearTimer();
-    };
-  }, []);
-
-  useLayoutEffect(() => {
-    if (konvaContainerRef.current === null) {
-      return;
-    }
-
-    const konvaContainer = konvaContainerRef.current;
-
-    setKonva(
-      produce((draft) => {
-        draft.height = konvaContainer.offsetHeight;
-        draft.width = konvaContainer.offsetWidth;
-      }),
-    );
-  }, []);
-  // #endregion useEffect functions end
 
   // #region logic functions start
   const clearTimer = () => {
@@ -110,6 +75,41 @@ const TestH5: FC<TestH5Props> = () => {
     );
   };
   // #endregion logic functions end
+
+  // #region useEffect functions start
+  useEffect(() => {
+    return () => {
+      clearTimer();
+    };
+  }, []);
+
+  useLayoutEffect(() => {
+    if (konvaContainerRef.current === null) {
+      return;
+    }
+
+    const konvaContainer = konvaContainerRef.current;
+
+    setKonva(
+      produce((draft) => {
+        draft.height = konvaContainer.offsetHeight;
+        draft.width = konvaContainer.offsetWidth;
+      }),
+    );
+  }, []);
+  // #endregion useEffect functions end
+
+  const { onClick: onDivClick, onDoubleClick: onDivDoubleClick } =
+    useHandleClick<HTMLDivElement>(
+      (e) => {
+        handleEvent("div", e.type);
+        // e.preventDefault();
+        // e.stopPropagation();
+      },
+      (e) => {
+        handleEvent("div", e.type);
+      },
+    );
 
   // #region render functions start
   return (

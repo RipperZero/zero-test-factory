@@ -4,7 +4,9 @@ description: >
   When generating or updating React components in `.tsx` files,
   always use our team conventions: arrow functions by default for all functions
   and use the detailed functional component template for every component,
-  including multiple components in the same file.
+  including multiple components in the same file. Trigger on requests like
+  "generate component", "refactor component", "convert to FC", or when
+  editing `.tsx` files that need standardization.
 ---
 
 # React Component Generation Guidelines
@@ -44,27 +46,26 @@ import { FC, useEffect, useState } from "react";
 type {{ComponentName}}Props = unknown;
 
 const {{ComponentName}}: FC<{{ComponentName}}Props> = () => {
-// #region hooks start
-const [_temp, setTemp] = useState();
-// #endregion hooks end
+  // #region hooks start
+  const [_temp, setTemp] = useState<unknown>(undefined);
+  // #endregion hooks end
 
-// #region useEffect functions start
-useEffect(() => {
-console.log(\_temp);
-}, []);
-// #endregion useEffect functions end
+  // #region logic functions start
+  // #endregion logic functions end
 
-// #region logic functions start
-// #endregion logic functions end
+  // #region useEffect functions start
+  useEffect(() => {
+    console.log(_temp);
+  }, []);
+  // #endregion useEffect functions end
 
-// #region render functions start
-return (
-<>
-
-<div>{{ComponentName}}</div>
-</>
-);
-// #endregion render functions end
+  // #region render functions start
+  return (
+    <>
+      <div>{{ComponentName}}</div>
+    </>
+  );
+  // #endregion render functions end
 };
 
 export type { {{ComponentName}}Props };
@@ -82,27 +83,27 @@ import { FC, PropsWithChildren, useEffect, useState } from "react";
 type {{ComponentName}}Props = unknown;
 
 const {{ComponentName}}: FC<PropsWithChildren<{{ComponentName}}Props>> = ({ children }) => {
-// #region hooks start
-const [_temp, setTemp] = useState();
-// #endregion hooks end
+  // #region hooks start
+  const [_temp, setTemp] = useState<unknown>(undefined);
+  // #endregion hooks end
 
-// #region useEffect functions start
-useEffect(() => {
-console.log(\_temp);
-}, [_temp]);
-// #endregion useEffect functions end
+  // #region logic functions start
+  // #endregion logic functions end
 
-// #region logic functions start
-// #endregion logic functions end
+  // #region useEffect functions start
+  useEffect(() => {
+    console.log(_temp);
+  }, [_temp]);
+  // #endregion useEffect functions end
 
-// #region render functions start
-return (
-<>
-
-<div>{{ComponentName}} with children</div>
-</>
-);
-// #endregion render functions end
+  // #region render functions start
+  return (
+    <>
+      <div>{{ComponentName}} with children</div>
+      {children}
+    </>
+  );
+  // #endregion render functions end
 };
 
 export type { {{ComponentName}}Props };
