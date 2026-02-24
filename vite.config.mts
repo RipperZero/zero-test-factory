@@ -5,6 +5,7 @@ import progress from "vite-plugin-progress";
 import svgr from "vite-plugin-svgr";
 import tsconfigPaths from "vite-tsconfig-paths";
 
+import { codeInspectorPlugin } from "code-inspector-plugin";
 // import { readFileSync } from "node:fs";
 // import { ServerOptions } from "node:https";
 import { resolve } from "node:path";
@@ -27,11 +28,14 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [
+      codeInspectorPlugin({
+        bundler: "vite",
+      }),
       react(),
       tailwindcss(),
       tsconfigPaths(),
       svgr({
-        include: "**/*.svg",
+        include: "src/**/*.svg",
       }),
       progress({
         format: `${green(bold("Building"))} ${cyan("[:bar]")} :percent`,
@@ -45,6 +49,22 @@ export default defineConfig(({ mode }) => {
       // @see https://vitejs.dev/config/server-options.html#server-https
       // basicSsl(),
     ],
+    optimizeDeps: {
+      include: [
+        "@ant-design/cssinjs",
+        "antd",
+        "dayjs",
+        "clsx",
+        "immer",
+        "large-small-dynamic-viewport-units-polyfill",
+        "radash",
+        "react",
+        "react-dom",
+        "react-router",
+        "tailwindcss",
+        "tailwind-merge",
+      ],
+    },
     envPrefix: ENV_PREFIX,
     base: base,
     server: {

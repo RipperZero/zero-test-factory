@@ -10,6 +10,12 @@ const useHandleTap = (
   handleDblTap: (event: TapEvent) => void,
   delay = 200,
 ) => {
+  const clearTimer = () => {
+    if (!!timeoutIdRef.current) {
+      clearTimeout(timeoutIdRef.current);
+    }
+  };
+
   const { run } = useDebounceFn(
     (event: TapEvent) => {
       clearTimer();
@@ -21,12 +27,6 @@ const useHandleTap = (
 
   const timeoutIdRef = useRef<NodeJS.Timeout | null>(null);
 
-  const clearTimer = () => {
-    if (!!timeoutIdRef.current) {
-      clearTimeout(timeoutIdRef.current);
-    }
-  };
-
   const onTap = useMemoizedFn((event: TapEvent) => {
     clearTimer();
 
@@ -34,6 +34,7 @@ const useHandleTap = (
       handleTap(event);
     }, delay);
 
+    // eslint-disable-next-line react-hooks/immutability
     timeoutIdRef.current = newTimeoutId;
   });
 
