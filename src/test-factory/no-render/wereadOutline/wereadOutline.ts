@@ -10,7 +10,9 @@ type OutlineItem = {
 };
 
 const rl = createInterface({
+  // eslint-disable-next-line no-undef
   input: process.stdin,
+  // eslint-disable-next-line no-undef
   output: process.stdout,
 });
 
@@ -23,7 +25,7 @@ const writeTxtFile = (content: string) => {
   return tryit(writeFile)("ai_outline.txt", content, "utf-8");
 };
 
-const extractOutlineFromHtml = (html: string | Buffer) => {
+const extractOutlineFromHtml = (html: string | globalThis.Buffer) => {
   const $ = cheerio.load(html);
   const outlineItems: OutlineItem[] = [];
 
