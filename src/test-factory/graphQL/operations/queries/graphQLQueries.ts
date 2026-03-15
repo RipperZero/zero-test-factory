@@ -1,4 +1,4 @@
-import {
+import type {
   DialysisCollaborationConfigQuery,
   DialysisCollaborationEditConfigQuery,
 } from "@api.graphQL";

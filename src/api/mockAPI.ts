@@ -1,4 +1,4 @@
-import { GetPatientList } from "@api.mockAPI";
+import type { GetPatientList } from "@api.mockAPI";
 
 import { createAxiosInstance } from "@/shared/utils/createAxiosInstance";
 

@@ -1,4 +1,7 @@
-import { FindAllUserResObj, RegisterUserReqParams } from "@api.testFactory";
+import type {
+  FindAllUserResObj,
+  RegisterUserReqParams,
+} from "@api.testFactory";
 
 import { createAxiosInstance } from "@/shared/utils/createAxiosInstance";
 
