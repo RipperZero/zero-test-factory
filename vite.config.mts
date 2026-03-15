@@ -1,9 +1,8 @@
-import react from "@vitejs/plugin-react-swc";
+import react from "@vitejs/plugin-react";
 import { defineConfig, loadEnv } from "vite";
 import mkcert from "vite-plugin-mkcert";
 import progress from "vite-plugin-progress";
 import svgr from "vite-plugin-svgr";
-import tsconfigPaths from "vite-tsconfig-paths";
 
 import { codeInspectorPlugin } from "code-inspector-plugin";
 // import { readFileSync } from "node:fs";
@@ -33,7 +32,6 @@ export default defineConfig(({ mode }) => {
       }),
       react(),
       tailwindcss(),
-      tsconfigPaths(),
       svgr({
         include: "src/**/*.svg",
       }),
@@ -75,6 +73,7 @@ export default defineConfig(({ mode }) => {
       // https: httpsOptions,
     },
     resolve: {
+      tsconfigPaths: true,
       alias: {
         lodash: "lodash-es",
         // file path mapping has been configured in [tsconfig.app.json]'s paths.
@@ -85,10 +84,28 @@ export default defineConfig(({ mode }) => {
     build: {
       // outDir: "dist",
       // sourcemap: true,
-      rollupOptions: {
+      // Vite 8 builds with Rolldown under the hood, so keep custom build output
+      // settings under `rolldownOptions` instead of the older Rollup-oriented name.
+      rolldownOptions: {
         output: {
-          manualChunks: {
-            react: ["react", "react-dom", "react-router"],
+          // The object form of `manualChunks` no longer works in the Vite 8 /
+          // Rolldown build pipeline. Use a function for now to preserve the old
+          // React vendor split behavior.
+          // Follow-up: `manualChunks` itself is no longer the long-term direction
+          // in Rolldown. Revisit this later and migrate to `output.codeSplitting`
+          // if we want to keep explicit chunking rules.
+          manualChunks: (id) => {
+            if (
+              id.includes("node_modules/react/") ||
+              id.includes("node_modules/react-dom/") ||
+              id.includes("node_modules/react-router/")
+            ) {
+              // Keep core React runtime packages in a stable shared chunk.
+              return "react";
+            }
+
+            // Let Vite/Rolldown decide the default chunking for everything else.
+            return undefined;
           },
           chunkFileNames: "assets/js/[name]-[hash].js",
           entryFileNames: "assets/js/[name]-[hash].js",
