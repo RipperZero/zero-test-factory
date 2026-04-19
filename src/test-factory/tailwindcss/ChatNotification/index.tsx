@@ -1,4 +1,4 @@
-import { FC } from "react";
+import type { FC } from "react";
 
 import { Space } from "antd";
 
@@ -23,7 +23,7 @@ const ChatNotification: FC<ChatNotificationProps> = () => {
         <div className={classes["chat-notification-logo-wrapper"]}>
           <img
             className={classes["chat-notification-logo"]}
-            src="/vite.svg"
+            src="/favicon.svg"
             alt="ChitChat Logo"
           />
         </div>
@@ -37,7 +37,7 @@ const ChatNotification: FC<ChatNotificationProps> = () => {
 
       <div className="mx-auto flex max-w-sm items-center space-x-4 rounded-xl bg-white p-6 shadow-lg">
         <div className="shrink-0">
-          <img className="h-12 w-12" src="/vite.svg" alt="ChitChat Logo" />
+          <img className="h-12 w-12" src="/favicon.svg" alt="ChitChat Logo" />
         </div>
         <div>
           <div className="text-xl font-medium text-black">ChitChat</div>

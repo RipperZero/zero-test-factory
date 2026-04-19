@@ -1,4 +1,5 @@
-import { FC, useRef, useState } from "react";
+import { useRef, useState } from "react";
+import type { FC } from "react";
 
 type InputProps = unknown;
 

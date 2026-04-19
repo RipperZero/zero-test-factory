@@ -1,4 +1,5 @@
-import { FC, use, useEffect } from "react";
+import { use, useEffect } from "react";
+import type { FC } from "react";
 
 import { Button } from "antd";
 

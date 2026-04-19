@@ -1,4 +1,4 @@
-import { FC } from "react";
+import type { FC } from "react";
 
 import { Button, Col, Image, Layout, Progress, Row, Typography } from "antd";
 

@@ -1,4 +1,5 @@
-import { FC, use } from "react";
+import { use } from "react";
+import type { FC } from "react";
 
 import { Typography } from "antd";
 

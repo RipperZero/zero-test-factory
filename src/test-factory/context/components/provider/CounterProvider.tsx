@@ -1,11 +1,5 @@
-import {
-  createContext,
-  FC,
-  PropsWithChildren,
-  useCallback,
-  useMemo,
-  useState,
-} from "react";
+import { createContext, useCallback, useMemo, useState } from "react";
+import type { FC, PropsWithChildren } from "react";
 
 const CounterProviderInner: FC = () => {
   console.log("===CounterProviderInner render===");

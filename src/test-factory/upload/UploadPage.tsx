@@ -1,4 +1,5 @@
-import { ChangeEvent, FC, useRef, useState } from "react";
+import { useRef, useState } from "react";
+import type { ChangeEvent, FC } from "react";
 
 import { Button, Progress, Typography } from "antd";
 

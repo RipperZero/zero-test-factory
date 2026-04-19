@@ -1,4 +1,5 @@
-import { Activity, FC, useEffect, useRef, useState } from "react";
+import { Activity, useEffect, useRef, useState } from "react";
+import type { FC } from "react";
 
 const getRandomColor = () => {
   console.log("====>>>> run getRandomColor");

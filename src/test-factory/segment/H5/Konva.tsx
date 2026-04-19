@@ -1,16 +1,10 @@
-import {
-  Dispatch,
-  FC,
-  SetStateAction,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { useEffect, useRef, useState } from "react";
+import type { Dispatch, FC, SetStateAction } from "react";
 import { Image, Layer, Stage, Star, Text } from "react-konva";
 
 import { produce } from "immer";
 import KonvaNamespace from "konva";
-import { KonvaEventObject } from "konva/lib/Node";
+import type { KonvaEventObject } from "konva/lib/Node";
 import { polyfill } from "mobile-drag-drop";
 import { scrollBehaviourDragImageTranslateOverride } from "mobile-drag-drop/scroll-behaviour";
 
