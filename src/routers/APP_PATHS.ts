@@ -16,6 +16,10 @@ const APP_PATHS = {
 
   SHOW: `${BASEURL}show`,
 
+  PRETEXT: `${BASEURL}pretext`,
+
+  PRETEXT_COSMIC: `${BASEURL}pretext-cosmic`,
+
   UPLOAD: `${BASEURL}upload`,
 
   GRAPH_QL: `${BASEURL}graphql`,
