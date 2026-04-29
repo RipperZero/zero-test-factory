@@ -28,7 +28,7 @@ export default defineConfig(
       react.configs.flat["jsx-runtime"],
     ],
     languageOptions: {
-      ecmaVersion: 2020,
+      ecmaVersion: "latest",
       parserOptions: {
         ecmaFeatures: {
           // Enable JSX parsing so ESLint can parse <Component /> syntax
