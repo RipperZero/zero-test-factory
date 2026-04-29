@@ -1,7 +1,5 @@
 import {
-  ChangeEvent,
   createContext,
-  FC,
   lazy,
   startTransition,
   Suspense,
@@ -10,6 +8,7 @@ import {
   useMemo,
   useState,
 } from "react";
+import type { ChangeEvent, FC } from "react";
 
 // Demonstrates rules from installed skills:
 // - composition over boolean props (compound components)

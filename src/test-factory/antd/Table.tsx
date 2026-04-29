@@ -1,13 +1,5 @@
-import {
-  createContext,
-  FC,
-  Key,
-  ReactNode,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
+import type { FC, Key, ReactNode } from "react";
 
 import type { InputRef } from "antd";
 import { Button, Form, Input, Popconfirm, Table } from "antd";

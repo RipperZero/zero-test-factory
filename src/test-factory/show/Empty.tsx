@@ -1,4 +1,4 @@
-import { CSSProperties, FC } from "react";
+import type { CSSProperties, FC } from "react";
 
 import { Typography } from "antd";
 
@@ -26,7 +26,7 @@ const Empty: FC<EmptyProps> = ({ style, className, tipClassName, tip }) => {
     <div style={style} className={twMerge("m-auto", className)}>
       <Typography.Text
         className={twMerge(
-          "whitespace-pre-line break-words text-center text-[14px] leading-[14px]",
+          "text-center text-[14px] leading-[14px] break-words whitespace-pre-line",
           tipClassName,
         )}
       >

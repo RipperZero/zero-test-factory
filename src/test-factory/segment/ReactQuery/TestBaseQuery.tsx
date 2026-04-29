@@ -1,4 +1,4 @@
-import { FC } from "react";
+import type { FC } from "react";
 
 import { findAllUser } from "@/api";
 import { UserTable } from "@/test-factory/components";

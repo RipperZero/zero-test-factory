@@ -1,4 +1,4 @@
-import { FC } from "react";
+import type { FC } from "react";
 import { RouterProvider } from "react-router/dom";
 
 import { App, ConfigProvider } from "antd";

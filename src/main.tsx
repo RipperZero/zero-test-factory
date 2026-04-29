@@ -1,11 +1,12 @@
 import {
-  QiankunProps,
   qiankunWindow,
   renderWithQiankun,
 } from "vite-plugin-qiankun/dist/helper";
+import type { QiankunProps } from "vite-plugin-qiankun/dist/helper";
 
 import { StrictMode } from "react";
-import { createRoot, Root } from "react-dom/client";
+import { createRoot } from "react-dom/client";
+import type { Root } from "react-dom/client";
 
 // polyfill for(lvh svh dvh)
 // @see https://github.com/joppuyo/large-small-dynamic-viewport-units-polyfill

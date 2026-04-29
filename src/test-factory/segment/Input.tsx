@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useCallback, useState } from "react";
+import type { FC } from "react";
 
 type InputProps = {
   inputValue?: string;

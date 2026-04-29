@@ -1,24 +1,28 @@
 // For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
-import storybook from "eslint-plugin-storybook";
-
 import configPrettier from "eslint-config-prettier";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
-import { defineConfig } from "eslint/config";
+// import storybook from "eslint-plugin-storybook";
+import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 
 import js from "@eslint/js";
 
 export default defineConfig(
+  globalIgnores([
+    "dist",
+    "node_modules",
+    "vite.config.mts",
+    "storybook-static",
+  ]),
   configPrettier,
-  { ignores: ["dist", "node_modules", "vite.config.mts"] },
   {
     // files: ["**/*.{js,jsx,ts,tsx}"],
     extends: [
       js.configs.recommended,
-      ...tseslint.configs.recommended,
+      tseslint.configs.recommended,
       // Use the automatic JSX runtime preset from eslint-plugin-react
       react.configs.flat["jsx-runtime"],
     ],

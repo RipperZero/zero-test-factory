@@ -49,18 +49,21 @@ export {};
 // console.log(obj.C);
 
 // ------------------------------------------ number
-enum SimpleEnumNum {
-  A = 2,
-  B = 3,
-  C = 4,
-}
+const SimpleEnumNum = {
+  A: 2,
+  B: 3,
+  C: 4,
+  2: "A",
+  3: "B",
+  4: "C",
+} as const;
 
 // 2
 console.log(SimpleEnumNum.A);
 // C
 console.log(SimpleEnumNum[4]);
 // undefined
-console.log(SimpleEnumNum[0]);
+console.log((SimpleEnumNum as Partial<Record<number, string>>)[0]);
 
 // const SampleConstantNum = {
 //   A: 2,
@@ -95,13 +98,15 @@ console.log(SimpleEnumNum[0]);
 
 // ------------------------------------------ string
 // @see https://www.typescriptlang.org/docs/handbook/enums.html#objects-vs-enums
-enum ColorsEnum {
-  red = "#DF2C2E",
-  blue = "#008ED6",
-  orange = "#E05123",
-  yellow = "#FBC10B",
-  green = "#0E7E60",
-}
+const ColorsEnum = {
+  red: "#DF2C2E",
+  blue: "#008ED6",
+  orange: "#E05123",
+  yellow: "#FBC10B",
+  green: "#0E7E60",
+} as const;
+
+type ColorsEnum = (typeof ColorsEnum)[keyof typeof ColorsEnum];
 
 const testFuncA = (param: ColorsEnum) => {
   console.log(param);

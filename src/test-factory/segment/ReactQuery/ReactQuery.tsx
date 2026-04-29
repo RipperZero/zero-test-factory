@@ -1,6 +1,7 @@
-import { FC } from "react";
+import type { FC } from "react";
 
-import { Tabs, TabsProps } from "antd";
+import { Tabs } from "antd";
+import type { TabsProps } from "antd";
 
 import { TestBaseQuery } from "./TestBaseQuery";
 import { TestMutation } from "./TestMutation";

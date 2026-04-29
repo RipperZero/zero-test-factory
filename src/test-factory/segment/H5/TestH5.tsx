@@ -1,11 +1,5 @@
-import {
-  CSSProperties,
-  FC,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import type { CSSProperties, FC } from "react";
 
 import { produce } from "immer";
 

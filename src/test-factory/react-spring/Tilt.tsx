@@ -1,4 +1,4 @@
-import { FC } from "react";
+import type { FC } from "react";
 import ReactTilt from "react-parallax-tilt";
 
 import { Card, Col, Image, Row, Typography } from "antd";

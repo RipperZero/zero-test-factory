@@ -1,6 +1,6 @@
 "use client";
 
-import { FC } from "react";
+import type { FC } from "react";
 
 import { CargoTracking } from "./components/CargoTracking";
 import { DashboardFooter } from "./components/DashboardFooter";

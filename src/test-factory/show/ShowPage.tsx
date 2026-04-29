@@ -1,10 +1,10 @@
-import { FC, Suspense, use, useEffect, useState } from "react";
+import { type FC, Suspense, use, useEffect, useState } from "react";
 
 import { Button, Card, Empty, Skeleton, Typography } from "antd";
 
 import { sleep, tryit } from "radash";
 
-import { GetPatientList } from "@api.mockAPI";
+import type { GetPatientList } from "@api.mockAPI";
 
 import { getPatientList } from "@/api";
 import { isNullable } from "@/shared/utils/tools";

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 
 import { useDebounceFn, useMemoizedFn } from "ahooks";
-import { KonvaEventObject } from "konva/lib/Node";
+import type { KonvaEventObject } from "konva/lib/Node";
 
 type TapEvent = KonvaEventObject<Event>;
 
