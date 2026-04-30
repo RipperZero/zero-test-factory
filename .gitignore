@@ -23,9 +23,11 @@ dist-ssr
 *.sln
 *.sw?
 
-# lock files
-yarn.lock
-package-lock.json
-pnpm-lock.yaml
+# storybook
 *storybook.log
 storybook-static
+
+# lock files
+# yarn.lock
+# package-lock.json
+# pnpm-lock.yaml
