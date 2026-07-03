@@ -22,10 +22,16 @@ import {
   walkLineRanges,
 } from "@chenglou/pretext";
 
-type Interval = {
-  left: number;
-  right: number;
-};
+import {
+  carveTextLineSlots,
+  circleIntervalForBand,
+  clamp,
+  getDistance,
+  lerp,
+  round,
+  type Interval,
+  type Obstacle,
+} from "./pretextCosmic.utils";
 
 type StageRect = {
   width: number;
@@ -40,13 +46,6 @@ type ActorState = {
   tilt: number;
 };
 
-type Obstacle = {
-  cx: number;
-  cy: number;
-  r: number;
-  hPad: number;
-  vPad: number;
-};
 
 type TextFragment = {
   id: string;
@@ -76,6 +75,7 @@ type Star = {
 
 type StatTileProps = {
   label: string;
+  testId?: string;
   value: number;
   suffix?: string;
 };
@@ -91,7 +91,6 @@ type PretextCosmicPageProps = unknown;
 const BODY_FONT_FAMILY = '"Cormorant Garamond", Georgia, serif';
 const BODY_FONT = `500 22px ${BODY_FONT_FAMILY}`;
 const BODY_LINE_HEIGHT = 28;
-const SLOT_MIN_WIDTH = 84;
 const STAGE_PADDING_X = 38;
 const STAGE_PADDING_TOP = 42;
 const STAGE_PADDING_BOTTOM = 32;
@@ -278,89 +277,6 @@ const STARS: Star[] = [
   },
 ];
 
-const clamp = (value: number, min: number, max: number) => {
-  return Math.min(Math.max(value, min), max);
-};
-
-const lerp = (from: number, to: number, amount: number) => {
-  return from + (to - from) * amount;
-};
-
-const round = (value: number) => {
-  return Number(value.toFixed(1));
-};
-
-const getDistance = (x1: number, y1: number, x2: number, y2: number) => {
-  return Math.hypot(x1 - x2, y1 - y2);
-};
-
-const circleIntervalForBand = (
-  obstacle: Obstacle,
-  bandTop: number,
-  bandBottom: number,
-) => {
-  const top = bandTop - obstacle.vPad;
-  const bottom = bandBottom + obstacle.vPad;
-
-  if (top >= obstacle.cy + obstacle.r || bottom <= obstacle.cy - obstacle.r) {
-    return null;
-  }
-
-  const minDy =
-    obstacle.cy >= top && obstacle.cy <= bottom
-      ? 0
-      : obstacle.cy < top
-        ? top - obstacle.cy
-        : obstacle.cy - bottom;
-
-  if (minDy >= obstacle.r) {
-    return null;
-  }
-
-  const maxDx = Math.sqrt(obstacle.r * obstacle.r - minDy * minDy);
-
-  return {
-    left: obstacle.cx - maxDx - obstacle.hPad,
-    right: obstacle.cx + maxDx + obstacle.hPad,
-  } satisfies Interval;
-};
-
-const carveTextLineSlots = (base: Interval, blocked: Interval[]) => {
-  let slots = [base];
-
-  for (let blockedIndex = 0; blockedIndex < blocked.length; blockedIndex += 1) {
-    const interval = blocked[blockedIndex];
-    const nextSlots: Interval[] = [];
-
-    for (let slotIndex = 0; slotIndex < slots.length; slotIndex += 1) {
-      const slot = slots[slotIndex];
-
-      if (interval.right <= slot.left || interval.left >= slot.right) {
-        nextSlots.push(slot);
-        continue;
-      }
-
-      if (interval.left > slot.left) {
-        nextSlots.push({ left: slot.left, right: interval.left });
-      }
-
-      if (interval.right < slot.right) {
-        nextSlots.push({ left: interval.right, right: slot.right });
-      }
-    }
-
-    slots = nextSlots;
-  }
-
-  return slots
-    .filter((slot) => {
-      return slot.right - slot.left >= SLOT_MIN_WIDTH;
-    })
-    .sort((leftSlot, rightSlot) => {
-      return leftSlot.left - rightSlot.left;
-    });
-};
-
 const getSingleLineWidth = (prepared: PreparedTextWithSegments) => {
   let widestLine = 0;
 
@@ -491,7 +407,7 @@ const buildProjection = (
   } satisfies LayoutProjection;
 };
 
-const StatTile: FC<StatTileProps> = ({ label, suffix, value }) => {
+const StatTile: FC<StatTileProps> = ({ label, suffix, testId, value }) => {
   // #region hooks start
   // #endregion hooks end
 
@@ -503,7 +419,10 @@ const StatTile: FC<StatTileProps> = ({ label, suffix, value }) => {
 
   // #region render functions start
   return (
-    <Card className="rounded-[24px] border-white/10 bg-white/6 backdrop-blur-sm">
+    <Card
+      className="rounded-[24px] border-white/10 bg-white/6 backdrop-blur-sm"
+      data-testid={testId}
+    >
       <Statistic
         formatter={(currentValue) => {
           return <span className="text-white">{currentValue}</span>;
@@ -584,6 +503,13 @@ const PretextCosmicPage: FC<PretextCosmicPageProps> = () => {
   const stageRef = useRef<HTMLDivElement | null>(null);
   const targetRef = useRef({ x: 540, y: 280 });
   const animationFrameRef = useRef<number | null>(null);
+  const isStaticVisualMode = useMemo(() => {
+    if (typeof window === "undefined") {
+      return false;
+    }
+
+    return new URLSearchParams(window.location.search).has("e2e-static");
+  }, []);
   const [stageRect, setStageRect] = useState<StageRect>({
     height: 720,
     width: 1180,
@@ -673,6 +599,26 @@ const PretextCosmicPage: FC<PretextCosmicPageProps> = () => {
       const nextWidth = entry.contentRect.width;
       const nextHeight = entry.contentRect.height;
       setStageRect({ height: nextHeight, width: nextWidth });
+
+      if (isStaticVisualMode) {
+        const fixedX = clamp(nextWidth * 0.56, 120, Math.max(nextWidth - 120, 120));
+        const fixedY = clamp(nextHeight * 0.38, 140, Math.max(nextHeight - 140, 140));
+
+        targetRef.current = {
+          x: fixedX,
+          y: fixedY,
+        };
+        setActor({
+          tilt: -6,
+          vx: 0,
+          vy: 0,
+          x: fixedX,
+          y: fixedY,
+        });
+
+        return;
+      }
+
       targetRef.current = {
         x: clamp(targetRef.current.x, 120, Math.max(nextWidth - 120, 120)),
         y: clamp(targetRef.current.y, 140, Math.max(nextHeight - 140, 140)),
@@ -684,10 +630,17 @@ const PretextCosmicPage: FC<PretextCosmicPageProps> = () => {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [isStaticVisualMode]);
 
   useEffect(() => {
     setLocale("en");
+
+    if (isStaticVisualMode) {
+      return () => {
+        clearCache();
+        setLocale(undefined);
+      };
+    }
 
     const animate = (time: number) => {
       handleAnimationStep(time);
@@ -704,7 +657,7 @@ const PretextCosmicPage: FC<PretextCosmicPageProps> = () => {
       clearCache();
       setLocale(undefined);
     };
-  }, []);
+  }, [handleAnimationStep, isStaticVisualMode]);
   // #endregion useEffect functions end
 
   // #region render functions start
@@ -725,7 +678,10 @@ const PretextCosmicPage: FC<PretextCosmicPageProps> = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#060816] px-4 py-6 text-white md:px-8">
+    <div
+      className="min-h-screen bg-[#060816] px-4 py-6 text-white md:px-8"
+      data-testid="pretext-cosmic-page"
+    >
       <style>
         {`
           @keyframes cosmic-twinkle {
@@ -801,9 +757,12 @@ const PretextCosmicPage: FC<PretextCosmicPageProps> = () => {
                   <div>
                     <div className="mb-2 flex items-center justify-between text-sm text-slate-300">
                       <span>Gravity radius</span>
-                      <span>{gravityRadius}px</span>
+                      <span data-testid="gravity-radius-value">
+                        {gravityRadius}px
+                      </span>
                     </div>
                     <Slider
+                      data-testid="gravity-radius-slider"
                       max={190}
                       min={88}
                       value={gravityRadius}
@@ -820,7 +779,11 @@ const PretextCosmicPage: FC<PretextCosmicPageProps> = () => {
                         Adds a secondary echo obstacle behind the pilot
                       </div>
                     </div>
-                    <Switch checked={dualCore} onChange={setDualCore} />
+                    <Switch
+                      checked={dualCore}
+                      data-testid="dual-core-switch"
+                      onChange={setDualCore}
+                    />
                   </div>
                 </Space>
               </Card>
@@ -829,21 +792,32 @@ const PretextCosmicPage: FC<PretextCosmicPageProps> = () => {
                 <Col span={12}>
                   <StatTile
                     label="Fragments"
+                    testId="fragments-stat"
                     value={projection.fragments.length}
                   />
                 </Col>
                 <Col span={12}>
-                  <StatTile label="Rows" value={projection.consumedRows} />
+                  <StatTile
+                    label="Rows"
+                    testId="rows-stat"
+                    value={projection.consumedRows}
+                  />
                 </Col>
                 <Col span={12}>
                   <StatTile
                     label="Line width"
                     suffix="px"
+                    testId="line-width-stat"
                     value={rawLineWidth}
                   />
                 </Col>
                 <Col span={12}>
-                  <StatTile label="Canvas" suffix="px" value={usableWidth} />
+                  <StatTile
+                    label="Canvas"
+                    suffix="px"
+                    testId="canvas-stat"
+                    value={usableWidth}
+                  />
                 </Col>
               </Row>
 
@@ -869,6 +843,7 @@ const PretextCosmicPage: FC<PretextCosmicPageProps> = () => {
           <Col span={24} xl={17}>
             <div
               ref={stageRef}
+              data-testid="cosmic-stage"
               className="relative min-h-[78vh] overflow-hidden rounded-[36px] border border-cyan-400/15 bg-[radial-gradient(circle_at_20%_10%,rgba(34,211,238,0.16),transparent_25%),radial-gradient(circle_at_78%_18%,rgba(168,85,247,0.28),transparent_24%),radial-gradient(circle_at_62%_70%,rgba(59,130,246,0.18),transparent_26%),linear-gradient(180deg,#040612_0%,#090b1e_48%,#090d19_100%)] shadow-[0_24px_120px_rgba(15,23,42,0.55)]"
               onPointerLeave={handlePointerLeave}
               onPointerMove={handlePointerMove}
@@ -884,7 +859,9 @@ const PretextCosmicPage: FC<PretextCosmicPageProps> = () => {
                     style={
                       {
                         "--star-opacity": `${star.opacity}`,
-                        animation: `cosmic-twinkle ${star.duration}s ease-in-out ${star.delay}s infinite`,
+                        animation: isStaticVisualMode
+                          ? "none"
+                          : `cosmic-twinkle ${star.duration}s ease-in-out ${star.delay}s infinite`,
                         height: star.size,
                         left: star.left,
                         opacity: star.opacity,
@@ -953,7 +930,10 @@ const PretextCosmicPage: FC<PretextCosmicPageProps> = () => {
                 Move your mouse through the nebula
               </div>
 
-              <div className="pointer-events-none absolute bottom-5 left-1/2 -translate-x-1/2 rounded-full border border-white/10 bg-black/35 px-5 py-2 text-xs text-slate-300 backdrop-blur-sm">
+              <div
+                data-testid="stage-footnote"
+                className="pointer-events-none absolute bottom-5 left-1/2 -translate-x-1/2 rounded-full border border-white/10 bg-black/35 px-5 py-2 text-xs text-slate-300 backdrop-blur-sm"
+              >
                 Powered by Pretext line routing, not DOM measurement
               </div>
             </div>

@@ -23,6 +23,8 @@ const APP_PATHS = {
   UPLOAD: `${BASEURL}upload`,
 
   GRAPH_QL: `${BASEURL}graphql`,
+
+  GRAPHI_QL: `${BASEURL}graphiql`,
 } as const;
 
 export { APP_PATHS };

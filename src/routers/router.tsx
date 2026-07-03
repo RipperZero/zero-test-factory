@@ -7,6 +7,7 @@ import { Antd } from "@/test-factory/antd";
 import { AxiosPage } from "@/test-factory/axios/AxiosPage";
 import { Context } from "@/test-factory/context/Context";
 import { GraphQL } from "@/test-factory/graphQL/GraphQL";
+import { GraphiQLPage } from "@/test-factory/graphQL/GraphiQLPage";
 import { ReactSpring } from "@/test-factory/react-spring";
 import { Segment } from "@/test-factory/segment";
 import { ShowPage } from "@/test-factory/show";
@@ -34,6 +35,7 @@ const router = createBrowserRouter(
     { path: APP_PATHS.PRETEXT_COSMIC, element: <PretextCosmicPage /> },
     { path: APP_PATHS.UPLOAD, element: <UploadPage /> },
     { path: APP_PATHS.GRAPH_QL, element: <GraphQL /> },
+    { path: APP_PATHS.GRAPHI_QL, element: <GraphiQLPage /> },
 
     {
       path: "/axios",
