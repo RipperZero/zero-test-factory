@@ -1,12 +1,8 @@
 ---
 name: react-component-template
-description: >
-  When generating or updating React components in `.tsx` files,
-  always use our team conventions: arrow functions by default for all functions
-  and use the detailed functional component template for every component,
-  including multiple components in the same file. Trigger on requests like
-  "generate component", "refactor component", "convert to FC", or when
-  editing `.tsx` files that need standardization.
+description: >-
+  在 `.tsx` 文件中生成或修改 React 组件时，使用团队约定：默认使用箭头函数、完整函数组件模板，并对同一文件内的多个组件保持一致。适用于“生成组件”“重构组件”“转换为 FC”或需要标准化 `.tsx` 组件的请求。
+  When generating or updating React components in `.tsx` files, always use our team conventions: arrow functions by default for all functions and use the detailed functional component template for every component, including multiple components in the same file. Trigger on requests like "generate component", "refactor component", "convert to FC", or when editing `.tsx` files that need standardization.
 ---
 
 # React Component Generation Guidelines
