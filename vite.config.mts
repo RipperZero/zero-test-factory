@@ -1,7 +1,7 @@
 import react from "@vitejs/plugin-react";
 import { defineConfig, loadEnv } from "vite";
 import mkcert from "vite-plugin-mkcert";
-import progress from "vite-plugin-progress";
+import progressModule from "vite-plugin-progress";
 import svgr from "vite-plugin-svgr";
 
 import { codeInspectorPlugin } from "code-inspector-plugin";
@@ -11,6 +11,9 @@ import { resolve } from "node:path";
 import picocolors from "picocolors";
 
 import tailwindcss from "@tailwindcss/vite";
+
+type ProgressPlugin = (typeof import("vite-plugin-progress"))["default"];
+const progress = progressModule as unknown as ProgressPlugin;
 
 const ENV_PREFIX = "ENV_";
 
@@ -78,7 +81,7 @@ export default defineConfig(({ mode }) => {
         lodash: "lodash-es",
         // file path mapping has been configured in [tsconfig.app.json]'s paths.
         // this is to support using [@] imports in CSS files.
-        "@": resolve(__dirname, "src"),
+        "@": resolve(import.meta.dirname, "src"),
       },
     },
     build: {

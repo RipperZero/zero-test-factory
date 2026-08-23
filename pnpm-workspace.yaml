@@ -1,3 +1,12 @@
 allowBuilds:
   core-js: false
   esbuild: true
+  node-pty: false
+minimumReleaseAgeExclude:
+  - "@tanstack/eslint-plugin-query@5.102.0"
+  - "@tanstack/query-core@5.102.0"
+  - "@tanstack/query-devtools@5.102.0"
+  - "@tanstack/react-query-devtools@5.102.0"
+  - "@tanstack/react-query@5.102.0"
+  - node-modules-inspector@2.4.3
+  - node-modules-tools@2.4.3
