@@ -1,14 +1,12 @@
 import dayjs, { Dayjs } from "dayjs";
 
-const isNullable = (value: any): value is null | undefined => {
+const isNullish = (value: unknown): value is null | undefined => {
   return value === null || value === undefined;
 };
 
 const isEmptyObject = (obj: object) => {
   return Object.keys(obj).length === 0;
 };
-
-const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 /**
  * Creates an array of elements split into groups the length of `size`.
@@ -113,9 +111,8 @@ const convertTime = (time: number | string) => {
 };
 
 export {
-  isNullable,
+  isNullish,
   isEmptyObject,
-  wait,
   chunk,
   convertSearchParamsToObj,
   notEmptyArray,

@@ -2,18 +2,17 @@ import type { ReactNode } from "react";
 
 import { isEmpty, isFunction } from "radash";
 
-// import { isNullable } from "@/shared/utils/tools";
-
-const isNullable = (value: any): value is null | undefined => {
-  return value === null || value === undefined;
-};
+import { isNullish } from "@/shared/utils/tools";
 
 type ShowProps<T> = {
   fallback?: ReactNode;
   hideWhenNullish?: boolean;
   /**
-   * Determines whether empty objects or arrays should also trigger the fallback.
-   * - If `true`, even non-null objects or arrays will trigger the fallback if they are empty.
+   * Determines whether a non-boolean, non-nullish trigger should render the fallback
+   * when `radash.isEmpty` considers it empty.
+   * - Empty values include `0`, empty strings, empty arrays or objects, empty `Map`
+   *   or `Set` instances, and invalid dates.
+   * - Boolean and nullish triggers are handled by their dedicated branches.
    * - Default: `false`.
    */
   banEmptyTrigger?: boolean;
@@ -40,7 +39,7 @@ type ShowProps<T> = {
  * Renders `children` if the `trigger` is valid, otherwise renders `fallback`.
  */
 const Show = <T,>({
-  fallback,
+  fallback = null,
   hideWhenNullish = false,
   banEmptyTrigger = false,
   trigger,
@@ -56,7 +55,7 @@ const Show = <T,>({
   // #endregion logic functions end
 
   // #region render functions start
-  if (hideWhenNullish && isNullable(trigger)) {
+  if (hideWhenNullish && isNullish(trigger)) {
     return null;
   }
 
@@ -64,7 +63,7 @@ const Show = <T,>({
     return trigger ? (children as ReactNode) : fallback;
   }
 
-  if (!isNullable(trigger)) {
+  if (!isNullish(trigger)) {
     if (banEmptyTrigger && isEmpty(trigger)) {
       return fallback;
     }

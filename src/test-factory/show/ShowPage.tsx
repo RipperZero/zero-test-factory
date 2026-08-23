@@ -7,7 +7,7 @@ import { sleep, tryit } from "radash";
 import type { GetPatientList } from "@api.mockAPI";
 
 import { getPatientList } from "@/api";
-import { isNullable } from "@/shared/utils/tools";
+import { isNullish } from "@/shared/utils/tools";
 
 import { Show } from "./Show";
 
@@ -109,7 +109,7 @@ const ShowPage: FC<ShowPageProps> = () => {
         >
           <Show
             trigger={getPatientListRes}
-            hideWhenNullish={loading && isNullable(getPatientListRes)}
+            hideWhenNullish={loading && isNullish(getPatientListRes)}
             banEmptyTrigger
             fallback={<Empty />}
           >
